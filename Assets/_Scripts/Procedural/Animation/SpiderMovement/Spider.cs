@@ -45,18 +45,5 @@ namespace Break.Procedural.Animation.SpiderMovement
             public LegRaycast Raycast;
             public LegTarget Target;
         }
-
-
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
-        {
-            foreach (var item in legs)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(item.Raycast.transform.position, item.Raycast.Point);
-                Gizmos.DrawSphere(item.Raycast.Point, 0.01f);
-            }
-        }
-#endif
     }
 }

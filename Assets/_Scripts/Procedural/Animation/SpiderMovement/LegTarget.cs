@@ -65,7 +65,7 @@ namespace Break.Procedural.Animation.SpiderMovement
 
             public Vector3 Evaluate(AnimationCurve curve)
             {
-                return Vector3.Lerp(FromPosition, ToPosition, Progress) + CMath.Up * curve.Evaluate(Progress);
+                return Vector3.Lerp(FromPosition, ToPosition, Progress) + Vectors.Up * curve.Evaluate(Progress);
             }
         }
     }

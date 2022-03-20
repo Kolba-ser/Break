@@ -11,7 +11,7 @@ namespace Break.Procedural.Animation.SpiderMovement
 
         private void Update()
         {
-            var ray = new Ray(transform.position, CMath.Down);
+            var ray = new Ray(transform.position, Vectors.Down);
             Physics.Raycast(ray, out hit);
         }
     }

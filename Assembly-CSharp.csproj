@@ -56,19 +56,29 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Movement\PlayerMovement.cs" />
+    <Compile Include="Assets\_Scripts\Projectiles\Projectile.cs" />
+    <Compile Include="Assets\Settings\Input\Input.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\Spider.cs" />
+    <Compile Include="Assets\_Scripts\Movement\Aim.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
     <Compile Include="Assets\_Scripts\Control\AimController.cs" />
-    <Compile Include="Assets\_Scripts\Shared\CMath.cs" />
-    <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegTarget.cs" />
-    <Compile Include="Assets\_Scripts\Movement\SpiderMovement.cs" />
-    <Compile Include="Assets\_Scripts\Movement\Rotator.cs" />
-    <Compile Include="Assets\_Scripts\Waepons\WeaponSettings.cs" />
-    <Compile Include="Assets\_Scripts\Waepons\Weapon.cs" />
-    <Compile Include="Assets\_Scripts\Waepons\Railgun.cs" />
-    <Compile Include="Assets\Settings\Input.cs" />
-    <Compile Include="Assets\_Scripts\Projectiles\Projectile.cs" />
+    <Compile Include="Assets\_Scripts\Shared\Singleton.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
+    <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />
+    <Compile Include="Assets\_Scripts\Shared\InputController.cs" />
+    <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegTarget.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\Characteristic.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\Harpoon\Harpoon.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
+    <Compile Include="Assets\_Scripts\Units\Direction.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\_Shaders\Circle.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -889,6 +899,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{4ECFC274-CAE2-2BDC-E967-C15D74FCC20F}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
