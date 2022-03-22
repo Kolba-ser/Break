@@ -63,19 +63,19 @@
     <Compile Include="Assets\_Scripts\Movement\Aim.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
     <Compile Include="Assets\_Scripts\Control\AimController.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
     <Compile Include="Assets\_Scripts\Shared\Singleton.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
     <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />
+    <Compile Include="Assets\_Scripts\Units\Direction.cs" />
     <Compile Include="Assets\_Scripts\Shared\InputController.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegTarget.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Characteristic.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\Harpoon.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\Units\Direction.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Shaders\Circle.shader" />
