@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rigidbody;
     private RaycastHit hit;
 
-
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -35,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         if (plane.Raycast(ray, out var enter))
         {
 
-            Physics.Raycast(body.position, Vectors.Down, out hit, distanceFromGround);
+            Physics.Raycast(body.position, Vectors.Down, out hit, distanceFromGround, Layers.Instance.Ground);
 
             var targetPoint = ray.GetPoint(enter);
             var directionToTarget = (targetPoint - rigidbodyPosition).normalized;

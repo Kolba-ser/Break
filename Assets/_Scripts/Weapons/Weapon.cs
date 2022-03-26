@@ -2,19 +2,52 @@
 
 using UnityEngine;
 
-namespace Assets.Scripts.Waepons
+namespace Break.Weapons
 {
-    public abstract class Weapon : MonoBehaviour
+    public abstract class Weapon : MonoBehaviour, IEquipable
     {
-        protected bool isShooting {get; private set; }
+        
+        private bool isPlaced;
 
-        protected virtual void StartShoot()
+        protected Aim aim;
+
+        public bool isShooting {get; private set; }
+        public bool isAimSet => aim != null;
+
+        public void Put(Transform parent)
+        {
+            if (isPlaced)
+                return;
+
+            transform.SetParent(parent);
+            transform.position = parent.position;
+            isPlaced = true;
+        }
+
+        public void PutAway()
+        {
+            transform.SetParent(null);
+            aim = null;
+            isPlaced = false;
+        }
+
+        public virtual void StartShoot()
         {
             isShooting = true;
         }
-        protected virtual void StopShoot()
+        public virtual void StopShoot()
         {
             isShooting = false;
+        }
+
+        public void SetAim(Aim aim)
+        {
+            this.aim = aim;
+        }
+
+        public void RemoveAim()
+        {
+            aim = null;
         }
     }
 }

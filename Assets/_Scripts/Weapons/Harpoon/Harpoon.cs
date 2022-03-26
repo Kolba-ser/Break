@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Waepons;
+﻿using Break.Weapons;
 using System;
 using UniRx;
 using UnityEngine;
@@ -7,7 +7,7 @@ using UnityEngine;
 public sealed class Harpoon : Weapon
 {
     [SerializeField] private Transform shotPoint;
-    [SerializeField] private Aim aim;
+
     [SerializeField] private LineRenderer rope;
 
     [Space(20)]
@@ -17,19 +17,15 @@ public sealed class Harpoon : Weapon
     private Graspable target;
     private IDisposable grappling;
 
-    private void Start()
-    {
-        InputController.Instance.OnFire(StartShoot, StopShoot);
-    }
 
-    protected override void StartShoot()
-    {
-        base.StartShoot();
 
+    public override void StartShoot()
+    {
         Physics.Raycast(shotPoint.position, shotPoint.forward, out hit, settings.RopeLength, settings.Graspable);
 
-        if (hit.collider && hit.collider.TryGetComponent(out Graspable graspable))
+        if (isAimSet && hit.collider && hit.collider.TryGetComponent(out Graspable graspable))
         {
+            base.StartShoot();
             target = graspable;
 
             var direction = new Direction(target.transform, shotPoint);
@@ -37,15 +33,10 @@ public sealed class Harpoon : Weapon
             target.Join(direction, settings.GrappingForce);
             ShowRope();
             aim.LookAtTarget(target.transform);
-            
-
         }
     }
-    protected override void StopShoot()
+    public override void StopShoot()
     {
-        if (!isShooting)
-            return;
-
         base.StopShoot();
 
         target.Execute();
