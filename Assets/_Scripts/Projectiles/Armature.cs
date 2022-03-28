@@ -1,4 +1,6 @@
 ﻿
+using System;
+using UniRx;
 using UnityEngine;
 
 namespace Break.Projectiles
@@ -6,16 +8,34 @@ namespace Break.Projectiles
     [RequireComponent(typeof(Rigidbody))]
     public sealed class Armature : Projectile
     {
-        private Rigidbody rigidbody;
+        [SerializeField] private Rigidbody rigidbody;
+        [SerializeField] private Collider collider;
 
-        private void Awake()
+        public Rigidbody Rigidbody => rigidbody;
+
+        public void OnEnable()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            Observable.Timer(lifeTime.InSec())
+                .Subscribe(_ => 
+                {
+                    ReturnToPool<Armature>(transform, OnReturned);
+                });
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            rigidbody.isKinematic = true;
+            Observable.TimerFrame(2).Subscribe(_ =>
+            {
+                rigidbody.isKinematic = true;
+                transform.SetParent(collision.transform);
+                collider.enabled = false;
+            });
+        }
+
+        private void OnReturned()
+        {
+            rigidbody.isKinematic = false;
+            collider.enabled = true;
         }
     }
 }

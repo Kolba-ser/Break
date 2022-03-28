@@ -6,6 +6,9 @@ public sealed class WeaponController : MonoBehaviour
     [SerializeField] private Weapon activeWeapon;
     [SerializeField] private Aim aim;
 
+    public delegate void WeaponHandler(float recoilForce);
+    public event WeaponHandler OnShotEvent;
+
     private void Start()
     {
         InputController.Instance.OnFire(OnFireStart, OnFireStop);
@@ -32,6 +35,7 @@ public sealed class WeaponController : MonoBehaviour
             return;
 
         activeWeapon.StartShoot();
+        OnShotEvent?.Invoke(activeWeapon.RecoilForce);
     }
 
     private void OnFireStop()

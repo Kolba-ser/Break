@@ -6,8 +6,6 @@ using UnityEngine;
 
 public sealed class Harpoon : Weapon
 {
-    [SerializeField] private Transform shotPoint;
-
     [SerializeField] private LineRenderer rope;
 
     [Space(20)]
@@ -16,8 +14,6 @@ public sealed class Harpoon : Weapon
     private RaycastHit hit;
     private Graspable target;
     private IDisposable grappling;
-
-
 
     public override void StartShoot()
     {

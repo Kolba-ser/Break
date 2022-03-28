@@ -90,6 +90,8 @@
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
     <Compile Include="Assets\_Scripts\Shared\Extensions.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\Railgun\Railgun.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Shaders\Circle.shader" />

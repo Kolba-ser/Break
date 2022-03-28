@@ -36,16 +36,13 @@ namespace Break.Pool
             return false;
         }
 
-        public bool TryRemove<T>(T pooledObject)
+        public bool TryRemove<T>(Transform pooledObject)
         {
             var targetType = typeof(T);
             var targetPool = pools.Find(_ => _.Type == targetType);
-
-            var pooledTransfrom = pooledObject as Transform;
-
-            if (targetPool != null && pooledTransfrom != null)
+            if (targetPool != null && pooledObject != null)
             {
-                return targetPool.TryRemove(pooledTransfrom);
+                return targetPool.TryRemove(pooledObject);
             }
 
             return false;
@@ -196,6 +193,9 @@ namespace Break.Pool
                     return false;
                 }
 
+                pooledObject.SetParent(container);
+                pooledObject.gameObject.SetActive(false);
+
                 avaliables.Enqueue(pooledObject);
                 return true;
             }
@@ -204,7 +204,7 @@ namespace Break.Pool
             {
 
                 var created = factory.Create(container.transform);
-                created.gameObject.SetActive(factory);
+                created.gameObject.SetActive(true);
                 Quantity++;
                 return created;
             }

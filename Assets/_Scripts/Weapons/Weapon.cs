@@ -6,13 +6,16 @@ namespace Break.Weapons
 {
     public abstract class Weapon : MonoBehaviour, IEquipable
     {
-        
+        [SerializeField] protected Transform shotPoint;
+        [SerializeField] protected float recoilForce;
+
         private bool isPlaced;
 
         protected Aim aim;
 
         public bool isShooting {get; private set; }
         public bool isAimSet => aim != null;
+        public float RecoilForce => recoilForce;
 
         public void Put(Transform parent)
         {

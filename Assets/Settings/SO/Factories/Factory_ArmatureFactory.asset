@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e553c0110e1aaa42a29a40f98585150, type: 3}
   m_Name: Factory_ArmatureFactory
   m_EditorClassIdentifier: 
-  armature: {fileID: 0}
+  armature: {fileID: 2974294897353815569, guid: 82b579e73d32919428787caceb9b3727, type: 3}
