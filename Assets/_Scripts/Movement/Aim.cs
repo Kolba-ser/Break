@@ -7,6 +7,7 @@ using UnityEngine;
 public sealed class Aim : MonoBehaviour
 {
     [SerializeField] private bool rotateOnStart;
+    [SerializeField] private LayerMask targetLayers;
 
     private Camera mainCamera;
 
@@ -52,7 +53,7 @@ public sealed class Aim : MonoBehaviour
         .Subscribe(_ =>
         {
             var ray = mainCamera.ScreenPointToRay(InputController.Instance.MousePosition);
-            if (Physics.Raycast(ray, out var hit))
+            if (Physics.Raycast(ray, out var hit, targetLayers))
             {
                 activeWeapon.transform.LookAt(hit.point);
             }

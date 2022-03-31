@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotPoint: {fileID: 2830761619989664638}
+  recoilForce: 10
   rope: {fileID: 2821674576754992941}
   settings: {fileID: 11400000, guid: d923f1d77aa49184582ae632ad9cd72e, type: 2}
 --- !u!54 &1030277245

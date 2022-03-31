@@ -3,19 +3,31 @@ using UnityEngine;
 
 public abstract class Characteristic : MonoBehaviour
 {
-    protected bool isPrepared { get; private set; }
+    protected bool IsPrepared { get; private set; }
+    protected bool IsExecuted { get; private set; }
+    protected bool IsJoined { get; private set; }
 
-    public abstract void Execute();
+
+    public void Execute()
+    {
+        IsExecuted = true;
+    }
+
+    public void Join()
+    {
+        IsJoined = true;
+    }
 
     protected void TakeOff()
     {
-        isPrepared = false;
+        IsPrepared = false;
+        IsExecuted = false;
+        IsJoined = false;
     }
 
     protected void Prepare() 
     {
-        isPrepared = true;
+        IsPrepared = true;
     }
-
 }
 

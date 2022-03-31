@@ -125,6 +125,8 @@ namespace Break.Pool
                 go.transform.SetParent(parent);
                 container = go.transform;
 
+                numOfAvaliables = Quantity;
+
                 for (int i = 0; i < Quantity; i++)
                 {
                     var created = factory.Create(container.transform);
@@ -166,6 +168,7 @@ namespace Break.Pool
                         createdObject.gameObject.SetActive(false);
 
                         numberOfCreatedObjects++;
+                        numOfAvaliables++;
                         avaliables.Enqueue(createdObject);
                     });
             }
@@ -189,7 +192,7 @@ namespace Break.Pool
             {
                 if (!unavaliables.Remove(pooledObject))
                 {
-                    Debug.LogError($"{pooledObject.name} does not exists in the pool <{Type}>");
+                    //Debug.LogError($"{pooledObject.name} does not exists in the pool <{Type}>");
                     return false;
                 }
 

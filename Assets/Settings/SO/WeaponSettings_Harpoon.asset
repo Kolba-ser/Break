@@ -17,6 +17,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   ropeDistance: 2
-  grappingForce: 2
+  grappingForce: 10
   springForce: 50
   breakForce: 60

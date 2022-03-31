@@ -61,6 +61,7 @@
     <Compile Include="Assets\_Scripts\Movement\PlayerMovement.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Projectile.cs" />
     <Compile Include="Assets\Settings\Input\Input.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\Railgun\Railgun.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\Spider.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryBase.cs" />
     <Compile Include="Assets\_Scripts\Movement\Aim.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Assets\_Scripts\Triggers\PickupTrigger.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
     <Compile Include="Assets\_Scripts\Control\AimController.cs" />
+    <Compile Include="Assets\_Scripts\Shared\Extensions.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
     <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
     <Compile Include="Assets\_Scripts\Shared\Singleton.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\_Scripts\Units\Direction.cs" />
     <Compile Include="Assets\_Scripts\Inventory\Slot.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\FactoryBase.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
     <Compile Include="Assets\_Scripts\Shared\InputController.cs" />
     <Compile Include="Assets\_Scripts\Shared\Layers.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegTarget.cs" />
@@ -89,9 +92,9 @@
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\Shared\Extensions.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\Railgun\Railgun.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
+    <Compile Include="Assets\_Scripts\Movement\Pursuer.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\Pursued.cs" />
+    <Compile Include="Assets\_Scripts\Movement\IPursuer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Shaders\Circle.shader" />

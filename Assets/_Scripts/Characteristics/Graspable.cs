@@ -13,9 +13,9 @@ public sealed class Graspable : Characteristic
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    public override void Execute()
+    public void Execute()
     {
-        if (!isPrepared)
+        if (!IsPrepared)
             return;
 
         rigidbody.AddForce(direction.GetNormalized() * impulse, ForceMode.Impulse);
