@@ -18,7 +18,6 @@ namespace Break.Projectiles
                 rigidbody.isKinematic = true;
                 transform.SetParent(collision.transform);
                 collider.enabled = false;
-                Debug.Log(damage);
                 TakeDamage(collision.transform);
             });
         }

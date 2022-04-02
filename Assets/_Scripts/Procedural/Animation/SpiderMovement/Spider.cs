@@ -48,11 +48,11 @@ namespace Break.Procedural.Animation.SpiderMovement
 
         private void FixedUpdate()
         {
-            Physics.Raycast(rigidbody.position, Vectors.Down, out hit, distanceFromGround, Layers.Instance.Ground);
-            var currentDistanceFromGround = (rigidbody.position - hit.point).magnitude;
+            Physics.Raycast(rigidbody.position, -transform.up, out hit, distanceFromGround, Layers.Instance.Ground);
+            var currentDistanceFromGround = (transform.position - hit.point).magnitude;
             if (currentDistanceFromGround < distanceFromGround)
             {
-                rigidbody.AddForce(Vectors.Up * upForce, ForceMode.Acceleration);
+                rigidbody.AddForce(Vectors.Up * upForce, ForceMode.Impulse);
             }
         }
 

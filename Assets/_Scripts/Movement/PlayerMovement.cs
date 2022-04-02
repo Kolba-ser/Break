@@ -6,21 +6,36 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform body;
-    [SerializeField] private float MIN_DISTANCE_FROM_TARGET = 0.1f;
 
     [SerializeField] private float speed;
     [SerializeField] private float accelerations;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float jumpForce;
     [SerializeField] private float distanceFromGround;
 
     private Camera mainCamera;
     private Rigidbody rigidbody;
     private RaycastHit hit;
 
+    private float MIN_DISTANCE_FROM_TARGET = 0.12f;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
+    }
+
+    private void Start()
+    {
+        InputController.Instance.OnJump(Jump);
+    }
+
+    private void Jump()
+    {
+        if (CanJump())
+        {
+            rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
     }
 
     private void FixedUpdate()
@@ -59,5 +74,10 @@ public class PlayerMovement : MonoBehaviour
                 rotationSpeed + Time.fixedDeltaTime
                 );
         }
+    }
+
+    private bool CanJump()
+    {
+        return (rigidbody.position - hit.point).magnitude < distanceFromGround;
     }
 }

@@ -1402,8 +1402,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromGround: 0.15
-  upForce: 11
-  stepLength: 0.3
+  upForce: 3
+  stepLength: 0.25
   legs:
   - Raycast: {fileID: 1711891387}
     Target: {fileID: 1349994901}
@@ -1421,8 +1421,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537008473948126}
   serializedVersion: 2
-  m_Mass: 10.34
-  m_Drag: 5
+  m_Mass: 10.5
+  m_Drag: 2
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1485,11 +1485,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4292917425908180}
-  MIN_DISTANCE_FROM_TARGET: 0.12
   speed: 1
   accelerations: 1
   rotationSpeed: 7
-  distanceFromGround: 0.2
+  jumpForce: 30
+  distanceFromGround: 0.3
 --- !u!114 &7702708860770398464
 MonoBehaviour:
   m_ObjectHideFlags: 0

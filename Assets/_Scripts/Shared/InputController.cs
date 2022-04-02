@@ -58,6 +58,11 @@ public class InputController : Singleton<InputController>
         inputControlls.Player.Fire.canceled += _ => callback();
     }
 
+    public void OnJump(Action callback)
+    {
+        inputControlls.Player.Jump.performed += _ => callback();
+    }
+
     private void OnEnable()
     {
         inputControlls.Enable();
