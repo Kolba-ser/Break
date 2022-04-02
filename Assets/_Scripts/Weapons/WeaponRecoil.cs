@@ -5,20 +5,20 @@ using UnityEngine;
 public sealed class WeaponRecoil : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidbody;
-    [SerializeField] private WeaponController weapon;
+    [SerializeField] private WeaponController weaponController;
 
     private void OnEnable()
     {
-        weapon.OnShotEvent += OnShot;
+        weaponController.Subscribe(OnShot);
     }
     private void OnDisable()
     {
-        weapon.OnShotEvent -= OnShot;
+        weaponController.Unsubscribe(OnShot);
     }
 
-    private void OnShot(float recoilForce, Vector3 direction)
+    private void OnShot()
     {
-        rigidbody.AddForce(recoilForce * direction, ForceMode.Impulse);
+        rigidbody.AddForce(weaponController.ActiveWeapon.RecoilForce * -weaponController.ActiveWeapon.transform.forward, ForceMode.Impulse);
     }
 }
 

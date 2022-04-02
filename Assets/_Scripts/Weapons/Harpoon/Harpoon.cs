@@ -1,9 +1,10 @@
 ﻿using Break.Weapons;
+using Cinemachine;
 using System;
 using UniRx;
 using UnityEngine;
 
-
+[RequireComponent(typeof(CinemachineImpulseSource))]
 public sealed class Harpoon : Weapon
 {
     [SerializeField] private LineRenderer rope;
@@ -11,11 +12,19 @@ public sealed class Harpoon : Weapon
     [Space(20)]
     [SerializeField] private HarpoonSettings settings;
 
-    private RaycastHit hit;
+    private CinemachineImpulseSource impulseSource;
     private Graspable target;
+    
+    private RaycastHit hit;
+    
     private IDisposable grappling;
 
-    public override void StartShoot()
+    private void Awake()
+    {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
+
+    public override void StartShoot(Action callback = null)
     {
         Physics.Raycast(shotPoint.position, shotPoint.forward, out hit, settings.RopeLength, settings.Graspable);
 
@@ -29,9 +38,11 @@ public sealed class Harpoon : Weapon
             target.Join(direction, settings.GrappingForce);
             ShowRope();
             aim.LookAtTarget(target.transform);
+            callback?.Invoke();
+            impulseSource.GenerateImpulse();
         }
     }
-    public override void StopShoot()
+    public override void StopShoot(Action callback = null)
     {
         base.StopShoot();
 

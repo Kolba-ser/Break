@@ -1401,7 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bc04a7aab7227468de95d7b9af78f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceFromGround: 0.1
+  distanceFromGround: 0.15
   upForce: 11
   stepLength: 0.3
   legs:
@@ -1422,8 +1422,8 @@ Rigidbody:
   m_GameObject: {fileID: 1537008473948126}
   serializedVersion: 2
   m_Mass: 10.34
-  m_Drag: 10
-  m_AngularDrag: 0.05
+  m_Drag: 5
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1488,7 +1488,7 @@ MonoBehaviour:
   MIN_DISTANCE_FROM_TARGET: 0.12
   speed: 1
   accelerations: 1
-  rotationSpeed: 5
+  rotationSpeed: 7
   distanceFromGround: 0.2
 --- !u!114 &7702708860770398464
 MonoBehaviour:
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 31123240}
-  weapon: {fileID: 7702708860770398464}
+  weaponController: {fileID: 7702708860770398464}
 --- !u!114 &1797083274
 MonoBehaviour:
   m_ObjectHideFlags: 0

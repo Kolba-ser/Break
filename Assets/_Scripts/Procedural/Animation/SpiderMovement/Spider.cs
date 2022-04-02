@@ -1,9 +1,10 @@
 ﻿using System;
+using UniRx;
 using UnityEngine;
 
 namespace Break.Procedural.Animation.SpiderMovement
 {
-    public sealed class Spider : MonoBehaviour
+    public sealed class Spider : MonoBehaviour, IKillable
     {
         [SerializeField] private float distanceFromGround;
         [SerializeField] private float upForce;
@@ -16,27 +17,39 @@ namespace Break.Procedural.Animation.SpiderMovement
 
         private RaycastHit hit;
 
+        private IDisposable moving;
+
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        private void Start()
         {
-            for (int i = 0; i < legs.Length; i++)
-            {
-                var leg = legs[i];
+            Move();
+        }
 
-                if (CanTakeStep(leg) && CanMove(i))
-                    TakeStep(leg);
-            }
+        private void Move()
+        {
+            moving?.Dispose();
+
+            moving = Observable.EveryUpdate().TakeUntilDisable(gameObject)
+                .Subscribe(_ =>
+                {
+                    for (int i = 0; i < legs.Length; i++)
+                    {
+                        var leg = legs[i];
+
+                        if (CanTakeStep(leg) && CanMove(i))
+                            TakeStep(leg);
+                    }
+                });
         }
 
         private void FixedUpdate()
         {
             Physics.Raycast(rigidbody.position, Vectors.Down, out hit, distanceFromGround, Layers.Instance.Ground);
             var currentDistanceFromGround = (rigidbody.position - hit.point).magnitude;
-            Debug.Log(name + $" {currentDistanceFromGround}");
             if (currentDistanceFromGround < distanceFromGround)
             {
                 rigidbody.AddForce(Vectors.Up * upForce, ForceMode.Acceleration);
@@ -60,6 +73,11 @@ namespace Break.Procedural.Animation.SpiderMovement
         private void TakeStep(in Leg leg)
         {
             leg.Target.MoveTo(leg.Raycast.Point);
+        }
+
+        public void OnDeath()
+        {
+            moving?.Dispose();
         }
 
         [Serializable]

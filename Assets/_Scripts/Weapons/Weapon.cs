@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using UnityEngine;
 
 namespace Break.Weapons
@@ -8,6 +9,7 @@ namespace Break.Weapons
     {
         [SerializeField] protected Transform shotPoint;
         [SerializeField] protected float recoilForce;
+        [SerializeField] protected float damage;
 
         private bool isPlaced;
 
@@ -34,11 +36,11 @@ namespace Break.Weapons
             isPlaced = false;
         }
 
-        public virtual void StartShoot()
+        public virtual void StartShoot(Action callback = null)
         {
             isShooting = true;
         }
-        public virtual void StopShoot()
+        public virtual void StopShoot(Action callback = null)
         {
             isShooting = false;
         }

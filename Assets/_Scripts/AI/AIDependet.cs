@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public abstract class AIDependet : MonoBehaviour
+public abstract class AIDependet : MonoBehaviour, IKillable
 {
     [SerializeField] private AITrigger trigger;
     [Space(20)]
@@ -34,6 +34,12 @@ public abstract class AIDependet : MonoBehaviour
 
     protected virtual void OnExit()
     {
+        target = null;
+    }
+
+    public virtual void OnDeath()
+    {
+        agent.enabled = false;
         target = null;
     }
 }

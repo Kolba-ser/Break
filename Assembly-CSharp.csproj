@@ -70,6 +70,7 @@
     <Compile Include="Assets\_Scripts\Triggers\PickupTrigger.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
     <Compile Include="Assets\_Scripts\Control\AimController.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\IKillable.cs" />
     <Compile Include="Assets\_Scripts\Shared\Extensions.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
     <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\_Scripts\AI\AIDependet.cs" />
     <Compile Include="Assets\_Scripts\Triggers\AITrigger.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\Damagable.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
     <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />

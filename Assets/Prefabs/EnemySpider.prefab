@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.12
+  m_Radius: 1.35
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1693515876701403656
 GameObject:
@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 3649251044597636479}
   - component: {fileID: 7452226113525101554}
   - component: {fileID: 7452226113525101556}
+  - component: {fileID: 1237756931}
   m_Layer: 10
   m_Name: EnemySpider
   m_TagString: Untagged
@@ -234,6 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bc04a7aab7227468de95d7b9af78f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceFromGround: 3
+  upForce: 0
   stepLength: 0.3
   legs:
   - Raycast: {fileID: 2753141125561873730}
@@ -363,6 +366,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c591b2ce55a7f34eb9c6f36f2b3534b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1237756931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751816619019741479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79890edc6d951b0428ec93feee43d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: {fileID: 7452226113525101554}
 --- !u!1 &2751821475615627337
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
-﻿
-using System;
-using UniRx;
+﻿using UniRx;
 using UnityEngine;
 
 namespace Break.Projectiles
@@ -13,15 +11,6 @@ namespace Break.Projectiles
 
         public Rigidbody Rigidbody => rigidbody;
 
-        public void OnEnable()
-        {
-            Observable.Timer(lifeTime.InSec())
-                .Subscribe(_ => 
-                {
-                    ReturnToPool<Armature>(transform, OnReturned);
-                });
-        }
-
         private void OnCollisionEnter(Collision collision)
         {
             Observable.TimerFrame(2).Subscribe(_ =>
@@ -29,13 +18,36 @@ namespace Break.Projectiles
                 rigidbody.isKinematic = true;
                 transform.SetParent(collision.transform);
                 collider.enabled = false;
+                Debug.Log(damage);
+                TakeDamage(collision.transform);
             });
         }
 
-        private void OnReturned()
+        public void OnEnable()
         {
+            Observable.Timer(lifeTime.InSec())
+                .Subscribe(_ =>
+                {
+                    ReturnToPool<Armature>(transform, OnReturned);
+                });
+        }
+
+        public void Launch(float damage, Vector3 force)
+        {
+            if (damage >= 0)
+            {
+                this.damage = damage * force.Lenght() * rigidbody.mass;
+                rigidbody.AddForce(force, ForceMode.Impulse);
+            }
+        }
+
+        protected override void OnReturned()
+        {
+            base.OnReturned();
             rigidbody.isKinematic = false;
             collider.enabled = true;
         }
+
+
     }
 }

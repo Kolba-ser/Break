@@ -1,16 +1,22 @@
 ﻿
 using System;
 using UniRx;
+using UnityEngine;
 
-public sealed class Chaser : AIDependet
+[RequireComponent(typeof(Rigidbody))]
+public sealed class Chaser : AIDependet, IKillable
 {
+    private Rigidbody rigidbody;
+
     private IDisposable chasing;
+    private IDisposable rotation;
 
     public void Chase()
     {
         chasing?.Dispose();
+        rotation?.Dispose();
 
-        chasing = Observable.Interval(0.2f.InSec()).TakeUntilDisable(target.transform)
+        chasing = Observable.Interval(0.2f.InSec()).TakeUntilDisable(target.transform).TakeUntilDisable(gameObject)
             .TakeWhile(_ => target != null)
             .Subscribe(_ =>
             {
@@ -22,6 +28,12 @@ public sealed class Chaser : AIDependet
     {
         base.OnEnter(target);
         Chase();
+    }
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        chasing?.Dispose();
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using Break.Weapons;
+using System;
 using UnityEngine;
 
 public sealed class WeaponController : MonoBehaviour
@@ -6,8 +7,9 @@ public sealed class WeaponController : MonoBehaviour
     [SerializeField] private Weapon activeWeapon;
     [SerializeField] private Aim aim;
 
-    public delegate void WeaponHandler(float recoilForce, Vector3 direction);
-    public event WeaponHandler OnShotEvent;
+    private Action OnShot;
+
+    public Weapon ActiveWeapon => activeWeapon;
 
     private void Start()
     {
@@ -34,8 +36,7 @@ public sealed class WeaponController : MonoBehaviour
         if (activeWeapon == null || activeWeapon.isShooting)
             return;
 
-        activeWeapon.StartShoot();
-        OnShotEvent?.Invoke(activeWeapon.RecoilForce, -activeWeapon.transform.forward);
+        activeWeapon.StartShoot(OnShot);
     }
 
     private void OnFireStop()
@@ -43,9 +44,18 @@ public sealed class WeaponController : MonoBehaviour
         if (activeWeapon == null || !activeWeapon.isShooting)
             return;
 
-        activeWeapon.StopShoot();
+        activeWeapon.StopShoot(OnShot);
     }
 
+    public void Subscribe(Action action)
+    {
+        OnShot += action;
+    }
+
+    public void Unsubscribe(Action action)
+    {
+        OnShot -= action;
+    }
 
 }
 

@@ -20,7 +20,7 @@ namespace Break.Pool
             }
         }
 
-        public bool TryGet<T>(out T pooledObject)
+        public bool TryGet<T>(out T pooledObject, bool activate = true)
         {
             pooledObject = default;
             var targetType = typeof(T);
@@ -29,7 +29,7 @@ namespace Break.Pool
 
             if (targetPool != null)
             {
-                pooledObject = targetPool.Get().GetComponent<T>();
+                pooledObject = targetPool.Get(activate).GetComponent<T>();
                 return true;
             }
 
@@ -86,6 +86,11 @@ namespace Break.Pool
             }
         }
 
+        public bool CanGet<T>()
+        {
+            return pools.Find(_ => _.Type == typeof(T)).isAvaliable;
+        }
+
         [Serializable]
         private class Pool : IDisposable
         {
@@ -108,7 +113,8 @@ namespace Break.Pool
             private IDisposable creation;
             private IDisposable destruction;
 
-            public bool isNotUsed => unavaliables.Count == 0;
+            public bool isNotUsed => numOfUnavaliables == 0;
+            public bool isAvaliable => numOfAvaliables > 0;
 
             public void Init(Transform parent)
             {
@@ -173,14 +179,14 @@ namespace Break.Pool
                     });
             }
 
-            public Transform Get()
+            public Transform Get(bool activate)
             {
                 var pooledObject = avaliables.Count > 0
                                     ? avaliables.Dequeue()
                                     : CreateAnother();
                 unavaliables.Add(pooledObject);
 
-                pooledObject.gameObject.SetActive(true);
+                pooledObject.gameObject.SetActive(activate);
 
                 numOfAvaliables--;
                 numOfUnavaliables++;

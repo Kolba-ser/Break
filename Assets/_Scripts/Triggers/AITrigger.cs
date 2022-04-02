@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
-public sealed class AITrigger : MonoBehaviour, IPursuer
+public sealed class AITrigger : MonoBehaviour, IPursuer, IKillable
 {
+    [SerializeField] private SphereCollider sphereTrigger;
+
     private Pursued target;
 
     public delegate void TriggerEnterHandler(ITargetable target);
@@ -15,7 +17,7 @@ public sealed class AITrigger : MonoBehaviour, IPursuer
         {
             pursued.Join(this);
             target = pursued;
-            OnEnterEvent(target);
+            OnEnterEvent?.Invoke(target);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -25,8 +27,13 @@ public sealed class AITrigger : MonoBehaviour, IPursuer
         {
             target.TakeOff(this);
             target = null;
-            OnExitEvent();
+            OnExitEvent?.Invoke();
         }
+    }
+
+    public void OnDeath()
+    {
+        sphereTrigger.enabled = false;
     }
 }
 
