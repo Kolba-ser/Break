@@ -1401,6 +1401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bc04a7aab7227468de95d7b9af78f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceFromGround: 0.1
+  upForce: 11
   stepLength: 0.3
   legs:
   - Raycast: {fileID: 1711891387}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class Pursued : Characteristic
+public sealed class Pursued : Characteristic, ITargetable
 {
     [SerializeField] private int maxNumOfPursuers = 2;
 

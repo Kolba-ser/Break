@@ -5,10 +5,21 @@ namespace Break.Procedural.Animation.SpiderMovement
 {
     public sealed class Spider : MonoBehaviour
     {
+        [SerializeField] private float distanceFromGround;
+        [SerializeField] private float upForce;
         [SerializeField] private float stepLength;
-
         [Space(20)]
+
         [SerializeField] private Leg[] legs;
+
+        private Rigidbody rigidbody;
+
+        private RaycastHit hit;
+
+        private void Awake()
+        {
+            rigidbody = GetComponent<Rigidbody>();
+        }
 
         private void Update()
         {
@@ -20,6 +31,18 @@ namespace Break.Procedural.Animation.SpiderMovement
                     TakeStep(leg);
             }
         }
+
+        private void FixedUpdate()
+        {
+            Physics.Raycast(rigidbody.position, Vectors.Down, out hit, distanceFromGround, Layers.Instance.Ground);
+            var currentDistanceFromGround = (rigidbody.position - hit.point).magnitude;
+            Debug.Log(name + $" {currentDistanceFromGround}");
+            if (currentDistanceFromGround < distanceFromGround)
+            {
+                rigidbody.AddForce(Vectors.Up * upForce, ForceMode.Acceleration);
+            }
+        }
+
 
         private bool CanMove(int index)
         {

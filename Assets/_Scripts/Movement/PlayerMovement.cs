@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         if (plane.Raycast(ray, out var enter))
         {
 
-            Physics.Raycast(body.position, Vectors.Down, out hit, distanceFromGround, Layers.Instance.Ground);
+            Physics.Raycast(body.position, -transform.up, out hit, distanceFromGround, Layers.Instance.Ground);
 
             var targetPoint = ray.GetPoint(enter);
             var directionToTarget = (targetPoint - rigidbodyPosition).normalized;
@@ -43,13 +43,6 @@ public class PlayerMovement : MonoBehaviour
             directionToTarget.y = normalDirection.y;
 
             var movementSpeed = directionToTarget * speed * InputController.Instance.MoveInput;
-
-            var currentDistanceFromGround = (body.position - hit.point).magnitude;
-
-            if (currentDistanceFromGround < distanceFromGround)
-            {
-                rigidbody.position = new Vector3(rigidbodyPosition.x, rigidbodyPosition.y + distanceFromGround - currentDistanceFromGround, rigidbodyPosition.z);
-            }
 
             var currentDistacneFormTarget = (rigidbody.position - targetPoint).magnitude;
 

@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Triggers\Interfaces\IPursuer.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\ArmatureFactory.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponPickupController.cs" />
     <Compile Include="Assets\_Scripts\Movement\PlayerMovement.cs" />
@@ -72,16 +73,21 @@
     <Compile Include="Assets\_Scripts\Shared\Extensions.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
     <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
+    <Compile Include="Assets\_Scripts\AI\Chaser.cs" />
     <Compile Include="Assets\_Scripts\Shared\Singleton.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
+    <Compile Include="Assets\_Scripts\AI\AIDependet.cs" />
+    <Compile Include="Assets\_Scripts\Triggers\AITrigger.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
     <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />
     <Compile Include="Assets\_Scripts\Units\Direction.cs" />
     <Compile Include="Assets\_Scripts\Inventory\Slot.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\Pursued.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\FactoryBase.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\Interfaces\ITargetable.cs" />
     <Compile Include="Assets\_Scripts\Shared\InputController.cs" />
     <Compile Include="Assets\_Scripts\Shared\Layers.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegTarget.cs" />
@@ -92,9 +98,6 @@
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\Movement\Pursuer.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\Pursued.cs" />
-    <Compile Include="Assets\_Scripts\Movement\IPursuer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Shaders\Circle.shader" />

@@ -6,7 +6,7 @@ public sealed class WeaponController : MonoBehaviour
     [SerializeField] private Weapon activeWeapon;
     [SerializeField] private Aim aim;
 
-    public delegate void WeaponHandler(float recoilForce);
+    public delegate void WeaponHandler(float recoilForce, Vector3 direction);
     public event WeaponHandler OnShotEvent;
 
     private void Start()
@@ -35,7 +35,7 @@ public sealed class WeaponController : MonoBehaviour
             return;
 
         activeWeapon.StartShoot();
-        OnShotEvent?.Invoke(activeWeapon.RecoilForce);
+        OnShotEvent?.Invoke(activeWeapon.RecoilForce, -activeWeapon.transform.forward);
     }
 
     private void OnFireStop()

@@ -169,10 +169,10 @@ GameObject:
   - component: {fileID: 2753141124845272070}
   - component: {fileID: 2753141124971491793}
   - component: {fileID: 2753141124971491792}
+  - component: {fileID: 7452226113525101553}
   - component: {fileID: 5535095061551917049}
   - component: {fileID: 1947280275092234838}
   - component: {fileID: 3649251044597636479}
-  - component: {fileID: 7452226113525101553}
   - component: {fileID: 7452226113525101554}
   - component: {fileID: 7452226113525101556}
   m_Layer: 10
@@ -273,6 +273,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.29, y: 0.12908545, z: 0.26}
   m_Center: {x: 0, y: 0.13545726, z: 0}
+--- !u!195 &7452226113525101553
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751816619019741479}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.1
+  m_Speed: 0.5
+  m_Acceleration: 2
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0.4
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.19
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 3
 --- !u!114 &5535095061551917049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,28 +339,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 2753141124971491793}
   weapon: {fileID: 5535095061551917049}
---- !u!195 &7452226113525101553
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751816619019741479}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.1
-  m_Speed: 0.5
-  m_Acceleration: 2
-  avoidancePriority: 50
-  m_AngularSpeed: 0
-  m_StoppingDistance: 0.4
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.19
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 3
 --- !u!114 &7452226113525101554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fb30e27398a1b4e9a7b79f14d47775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 7452226113525101553}
 --- !u!114 &7452226113525101556
 MonoBehaviour:
   m_ObjectHideFlags: 0
