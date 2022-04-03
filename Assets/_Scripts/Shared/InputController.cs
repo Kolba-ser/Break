@@ -9,9 +9,11 @@ public class InputController : Singleton<InputController>
     private Input inputControlls;
 
     private float moveInput;
+    private Vector3 moveKeyboardInput;
     private Vector2 mousePosition;
 
     public float MoveInput => moveInput;
+    public Vector3 MoveKeyboardInput => moveKeyboardInput;
     public Vector2 MousePosition => mousePosition;
 
     private void Awake()
@@ -20,6 +22,9 @@ public class InputController : Singleton<InputController>
 
         inputControlls.Player.Move.performed += _ => moveInput = _.ReadValue<float>();
         inputControlls.Player.Move.canceled += _ => moveInput = _.ReadValue<float>();
+
+        inputControlls.Player.MoveKeyboard.performed += _ => moveKeyboardInput = _.ReadValue<Vector3>();
+        inputControlls.Player.MoveKeyboard.canceled += _ => moveKeyboardInput = _.ReadValue<Vector3>();
     }
 
     /// <summary>

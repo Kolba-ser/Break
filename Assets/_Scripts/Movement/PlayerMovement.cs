@@ -57,13 +57,14 @@ public class PlayerMovement : MonoBehaviour
             var normalDirection = directionToTarget - Vector3.Dot(directionToTarget, hit.normal) * hit.normal;
             directionToTarget.y = normalDirection.y;
 
-            var movementSpeed = directionToTarget * speed * InputController.Instance.MoveInput;
 
-            var currentDistacneFormTarget = (rigidbody.position - targetPoint).magnitude;
-
-            if (currentDistacneFormTarget > MIN_DISTANCE_FROM_TARGET)
+            if(InputController.Instance.MoveKeyboardInput.x != 0)
             {
-                rigidbody.MovePosition(rigidbody.position + movementSpeed * Time.fixedDeltaTime);
+                rigidbody.MovePosition(rigidbody.position + transform.right * InputController.Instance.MoveKeyboardInput.x * Time.fixedDeltaTime);
+            }
+            if (InputController.Instance.MoveKeyboardInput.z != 0)
+            {
+                rigidbody.MovePosition(rigidbody.position + transform.forward * InputController.Instance.MoveKeyboardInput.z * Time.fixedDeltaTime);
             }
 
             rigidbody.rotation =
