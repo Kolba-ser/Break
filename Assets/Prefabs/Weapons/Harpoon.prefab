@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7620801a86b20754eacd37b55d847dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  info: {fileID: 11400000, guid: e33cfd31cf780274d872eb637ba5b264, type: 2}
   shotPoint: {fileID: 2830761619989664638}
   recoilForce: 2
   damage: 0

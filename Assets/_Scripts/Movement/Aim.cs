@@ -74,6 +74,11 @@ public sealed class Aim : MonoBehaviour
 
     }
 
+    public void Deactivate()
+    {
+        rotation?.Dispose();
+    }
+
 
 }
 

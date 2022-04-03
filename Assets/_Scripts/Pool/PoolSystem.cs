@@ -12,7 +12,7 @@ namespace Break.Pool
 
         [SerializeField] private List<Pool> pools;
 
-        private void Start()
+        private void Awake()
         {
             foreach (var pool in pools)
             {
@@ -98,7 +98,7 @@ namespace Break.Pool
             public int Quantity;
             public FactoryBase factory;
 
-            public Type Type;
+            public Type Type => factory.ProductType;
 
             private Queue<Transform> avaliables;
             private List<Transform> unavaliables;
@@ -120,8 +120,6 @@ namespace Break.Pool
             {
                 if (isInitialized)
                     return;
-
-                Type = factory.ProductType;
 
                 avaliables = new Queue<Transform>(Quantity);
                 unavaliables = new List<Transform>(Quantity);
@@ -149,7 +147,6 @@ namespace Break.Pool
                     return;
 
                 inProcessing = true;
-                Type = factory.ProductType;
 
                 avaliables = new Queue<Transform>(Quantity);
                 unavaliables = new List<Transform>(Quantity);

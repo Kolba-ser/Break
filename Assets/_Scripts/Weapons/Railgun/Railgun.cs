@@ -12,6 +12,10 @@ public sealed class Railgun : Weapon
     [SerializeField] private float minforce;
     [SerializeField] private float maxforce;
     [SerializeField] private float accambulationRate;
+    
+    [Header("OnPutAway")]
+    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private float throwForce;
 
     private CinemachineImpulseSource impulseSource;
 
@@ -55,7 +59,18 @@ public sealed class Railgun : Weapon
         }
     }
 
+    public override void Put(Transform parent)
+    {
+        rigidbody.isKinematic = true;
+        base.Put(parent);
+    }
 
+    public override void PutAway()
+    {
+        rigidbody.isKinematic = false;
+        rigidbody.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        base.PutAway();
+    }
 
 
 

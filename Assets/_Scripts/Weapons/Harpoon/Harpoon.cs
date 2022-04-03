@@ -28,7 +28,7 @@ public sealed class Harpoon : Weapon
     {
         Physics.Raycast(shotPoint.position, shotPoint.forward, out hit, settings.RopeLength, settings.Graspable);
 
-        if (isAimSet && hit.collider && hit.collider.TryGetComponent(out Graspable graspable))
+        if (IsAimSet && hit.collider && hit.collider.TryGetComponent(out Graspable graspable))
         {
             base.StartShoot();
             target = graspable;

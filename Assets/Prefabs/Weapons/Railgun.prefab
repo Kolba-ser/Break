@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 5009947944645436372}
   - component: {fileID: 5009947944645436369}
   - component: {fileID: 5009947944645436374}
-  - component: {fileID: 5009947944645436375}
   m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -115,19 +114,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5009947944645436375
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5009947944645436373}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5009947945632750962
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +128,8 @@ GameObject:
   - component: {fileID: 5009947945632750972}
   - component: {fileID: 5009947945632750973}
   - component: {fileID: 9132191465335208073}
+  - component: {fileID: 527412428}
+  - component: {fileID: 527412427}
   m_Layer: 7
   m_Name: Railgun
   m_TagString: Untagged
@@ -241,12 +229,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832bd06374a204b48b379f1037e0f1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  info: {fileID: 11400000, guid: 3c2713c23df776c4382513844cd86c9b, type: 2}
   shotPoint: {fileID: 814946283}
   recoilForce: 45
   damage: 10
   minforce: 10
   maxforce: 100
   accambulationRate: 2
+  rigidbody: {fileID: 527412428}
+  throwForce: 5
 --- !u!114 &9132191465335208073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,3 +291,31 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -0.1, z: 0}
+--- !u!54 &527412428
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009947945632750962}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &527412427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009947945632750962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c591b2ce55a7f34eb9c6f36f2b3534b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

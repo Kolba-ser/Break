@@ -24,16 +24,28 @@ public sealed class WeaponController : MonoBehaviour
             return;
         }
         if (activeWeapon != null)
+        {
             activeWeapon.RemoveAim();
+            activeWeapon.Deactivate();
+        }
 
         activeWeapon = weapon;
         activeWeapon.SetAim(aim);
+        activeWeapon.Activate();
         aim.Weapon = weapon;
+    }
+    public void RemoveWeapon()
+    {
+        if (activeWeapon != null)
+        {
+            activeWeapon.RemoveAim();
+            activeWeapon = null;
+        }
     }
 
     private void OnFireStart()
     {
-        if (activeWeapon == null || activeWeapon.isShooting)
+        if (activeWeapon == null || activeWeapon.IsShooting || !activeWeapon.IsActive)
             return;
 
         activeWeapon.StartShoot(OnShot);
@@ -41,7 +53,7 @@ public sealed class WeaponController : MonoBehaviour
 
     private void OnFireStop()
     {
-        if (activeWeapon == null || !activeWeapon.isShooting)
+        if (activeWeapon == null || !activeWeapon.IsShooting)
             return;
 
         activeWeapon.StopShoot(OnShot);

@@ -667,6 +667,50 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1857411501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857411503}
+  - component: {fileID: 1857411502}
+  m_Layer: 0
+  m_Name: Slot (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1857411503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857411501}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0863, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1433289030582001312}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1857411502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857411501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cc5def472166f45b9a090363ca7939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1950802391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1386,7 @@ GameObject:
   - component: {fileID: 4409936990109463727}
   - component: {fileID: 1797083265}
   - component: {fileID: 1797083274}
+  - component: {fileID: 2112587682}
   m_Layer: 6
   m_Name: SpiderOrange
   m_TagString: Untagged
@@ -1562,6 +1607,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumOfPursuers: 2
+--- !u!114 &2112587682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537008473948126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4217b17444f9d664b899f0404afd1f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponController: {fileID: 7702708860770398464}
+  inventory: {fileID: 4160509254926972462}
 --- !u!1 &1545403800867726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,6 +2180,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 667697068}
+  - {fileID: 1857411503}
   m_Father: {fileID: 4989476675865270}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2138,6 +2198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slots:
   - {fileID: 7931321711793767493}
+  - {fileID: 1857411502}
 --- !u!1 &7260024490861738228
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,27 +1,33 @@
 ﻿using Break.Inventory;
 using Break.Weapons;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class Inventory : InventoryBase<Weapon>
+public sealed class Inventory : InventoryBase<Weapon>, IInventoryModel
 {
     [SerializeField] private List<WeaponSlot> slots;
 
-    public int Capacity => slots.Count;
+    public override int Capacity => slots.Count;
 
     private bool isFull;
 
+    private void Awake()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            slots[i].Index = i;
+        }
+    }
+
     public override bool TryPutIn(Weapon item)
     {
-        Debug.Log(item.TryGetComponent(out IEquipable _));
-        Debug.Log(TryGetFirstFree(out WeaponSlot _));
-        Debug.Log(!isFull);
-
-        if (!isFull && item.TryGetComponent(out IEquipable equipable) && TryGetFirstFree(out WeaponSlot freesSlot))
+        if (!isFull && item.TryGetComponent(out IEquipable equipable) && TryGetFirstFree(out WeaponSlot freeSlot))
         {
-            Debug.Log("Инветарь");
-            return freesSlot.TryEquip(equipable, item);
+            if(!equipable.IsPlaced && freeSlot.TryEquip(equipable, item))
+            {
+                OnAdded(item, freeSlot.Index);
+                return true;
+            }
         }
 
         return false;
@@ -34,17 +40,7 @@ public sealed class Inventory : InventoryBase<Weapon>
         if (targetSlot != null && targetSlot.TryPullOut(out weapon))
         {
             isFull = false;
-            return true;
-        }
-
-        return false;
-    }
-    public override bool TryRemove(Weapon targetItem)
-    {
-        var targetSlot = slots.Find(_ => _.Item == targetItem);
-        if (targetSlot != null && targetSlot.TryRemove())
-        {
-            isFull = false;
+            OnRemoved(weapon, targetSlot.Index);
             return true;
         }
 
