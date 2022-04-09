@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 
 
-public abstract class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour, IPooledObject
 {
     [SerializeField] protected float lifeTime;
 
@@ -30,6 +30,14 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void OnReturned()
     {
         damage = 0;
+    }
+
+    public virtual void OnPullIn()
+    {
+    }
+
+    public virtual void OnPullOut()
+    {
     }
 }
 

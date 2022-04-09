@@ -57,16 +57,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Triggers\Interfaces\IPursuer.cs" />
-    <Compile Include="Assets\_Scripts\SO\Factories\ArmatureFactory.cs" />
+    <Compile Include="Assets\_Scripts\SO\Factories\Pool\ArmatureFactory.cs" />
+    <Compile Include="Assets\_Scripts\SO\Factories\Pool\SlotFactory.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponPickupController.cs" />
     <Compile Include="Assets\_Scripts\Movement\PlayerMovement.cs" />
+    <Compile Include="Assets\_Scripts\UI\Inventory\InventorySlotPresenter.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Projectile.cs" />
     <Compile Include="Assets\Settings\Input\Input.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Railgun\Railgun.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\Spider.cs" />
+    <Compile Include="Assets\_Scripts\Communication\ChatPresenter.cs" />
+    <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryModel.cs" />
+    <Compile Include="Assets\_Scripts\Utility\XML\SerializerXML.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryBase.cs" />
     <Compile Include="Assets\_Scripts\Movement\Aim.cs" />
+    <Compile Include="Assets\_Scripts\SO\Factories\Pool\PoolFactory.cs" />
+    <Compile Include="Assets\_Scripts\Communication\Dialogue.cs" />
     <Compile Include="Assets\_Scripts\Triggers\WeaponPickupTrigger.cs" />
+    <Compile Include="Assets\_Scripts\Pool\Interfaces\IPooledObject.cs" />
+    <Compile Include="Assets\_Scripts\UI\Inventory\InventoryPresenter.cs" />
+    <Compile Include="Assets\_Scripts\Control\EquipmentController.cs" />
     <Compile Include="Assets\_Scripts\Triggers\PickupTrigger.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
     <Compile Include="Assets\_Scripts\Control\AimController.cs" />
@@ -75,16 +85,24 @@
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
     <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
     <Compile Include="Assets\_Scripts\AI\Chaser.cs" />
-    <Compile Include="Assets\_Scripts\Shared\Singleton.cs" />
+    <Compile Include="Assets\_Scripts\Shared\MonoSingleton.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
+    <Compile Include="Assets\_Scripts\Utility\XML\UnityXmlHelper.cs" />
+    <Compile Include="Assets\_Scripts\SO\Factories\Pool\AnswerButtonFactory.cs" />
+    <Compile Include="Assets\_Scripts\Communication\AnswerButton.cs" />
+    <Compile Include="Assets\_Scripts\Communication\Message.cs" />
     <Compile Include="Assets\_Scripts\AI\AIDependet.cs" />
     <Compile Include="Assets\_Scripts\Triggers\AITrigger.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Damagable.cs" />
+    <Compile Include="Assets\_Scripts\SO\ItemInfo\ItemInfoBase.cs" />
+    <Compile Include="Assets\_Scripts\Inventory\InventoryModel.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
     <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />
+    <Compile Include="Assets\_Scripts\SO\Factories\Pool\MessageFactory.cs" />
     <Compile Include="Assets\_Scripts\Units\Direction.cs" />
+    <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryItemModel.cs" />
     <Compile Include="Assets\_Scripts\Inventory\Slot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Pursued.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\FactoryBase.cs" />
@@ -96,20 +114,16 @@
     <Compile Include="Assets\_Scripts\Inventory\IEquipable.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Characteristic.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\Harpoon.cs" />
+    <Compile Include="Assets\_Scripts\SO\ItemInfo\WeaponInfo.cs" />
     <Compile Include="Assets\_Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryModel.cs" />
-    <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryItemModel.cs" />
-    <Compile Include="Assets\_Scripts\SO\ItemInfo\ItemInfoBase.cs" />
-    <Compile Include="Assets\_Scripts\SO\ItemInfo\WeaponInfo.cs" />
-    <Compile Include="Assets\_Scripts\UI\Inventory\InventoryPresenter.cs" />
-    <Compile Include="Assets\_Scripts\Inventory\InventoryModel.cs" />
-    <Compile Include="Assets\_Scripts\UI\Inventory\InventorySlotPresenter.cs" />
-    <Compile Include="Assets\_Scripts\Pool\Interfaces\IPooledObject.cs" />
-    <Compile Include="Assets\_Scripts\SO\Factories\SlotFactory.cs" />
-    <Compile Include="Assets\_Scripts\Control\EquipmentController.cs" />
+    <Compile Include="Assets\_Scripts\SO\Images\Images.cs" />
+    <Compile Include="Assets\_Scripts\SO\Images\DialogueImages.cs" />
+    <Compile Include="Assets\_Scripts\Shared\Singletone.cs" />
+    <Compile Include="Assets\_Scripts\Events\EventHolder.cs" />
+    <Compile Include="Assets\_Scripts\Events\GlobalEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -128,11 +142,13 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Resourses\Dialogue_lvl1.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Resourses\Dialogue.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>

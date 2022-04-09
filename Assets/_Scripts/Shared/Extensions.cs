@@ -15,5 +15,31 @@ public static class Extensions
                         + Mathf.Pow(Mathf.Abs(vector.y), 2)
                         + Mathf.Pow(Mathf.Abs(vector.z), 2));
     }
+
+    public static bool InBounds<T>(this int index, T[] array)
+    {
+        if(index >= 0 && index < array.Length)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static bool IsEmpty(this string text)
+    {
+        if (text.Length > 0)
+            return false;
+
+        return true;
+    }
+
+    public static bool AsBool(this int num)
+    {
+        float temp = num;
+        num = (int)Mathf.Clamp01(temp);
+
+        return Convert.ToBoolean(num);
+    }
 }
 

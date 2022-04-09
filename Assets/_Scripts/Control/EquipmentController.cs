@@ -22,7 +22,7 @@ public sealed class EquipmentController : MonoBehaviour
     {
         if (weaponController.ActiveWeapon.Equals(itemModel.Component))
         {
-            weaponController.RemoveWeapon();
+            weaponController.ResetWeapon();
         }
     }
 }

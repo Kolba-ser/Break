@@ -34,7 +34,7 @@ public sealed class WeaponController : MonoBehaviour
         activeWeapon.Activate();
         aim.Weapon = weapon;
     }
-    public void RemoveWeapon()
+    public void ResetWeapon()
     {
         if (activeWeapon != null)
         {

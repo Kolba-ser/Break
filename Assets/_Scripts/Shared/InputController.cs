@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputController : Singleton<InputController>
+public class InputController : MonoSingleton<InputController>
 {
 
     private Input inputControlls;

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Break.Pool
 {
-    public sealed class PoolSystem : Singleton<PoolSystem>
+    public sealed class PoolSystem : MonoSingleton<PoolSystem>
     {
 
         [SerializeField] private List<Pool> pools;
@@ -29,7 +29,7 @@ namespace Break.Pool
 
             if (targetPool != null)
             {
-                pooledObject = targetPool.Get(activate).GetComponent<T>();
+                pooledObject = targetPool.Get(activate).transform.GetComponent<T>();
                 return true;
             }
 
@@ -48,7 +48,7 @@ namespace Break.Pool
             return false;
         }
 
-        public void CreatePool(int quantity, FactoryBase factory)
+        public void CreatePool(int quantity, PoolFactory factory)
         {
             var pool = new Pool();
             pool.factory = factory;
@@ -96,12 +96,12 @@ namespace Break.Pool
         {
             [Range(1, 150)]
             public int Quantity;
-            public FactoryBase factory;
+            public PoolFactory factory;
 
             public Type Type => factory.ProductType;
 
-            private Queue<Transform> avaliables;
-            private List<Transform> unavaliables;
+            private Queue<IPooledObject> avaliables;
+            private List<IPooledObject> unavaliables;
             private Transform container;
 
             private int numOfAvaliables;
@@ -121,8 +121,8 @@ namespace Break.Pool
                 if (isInitialized)
                     return;
 
-                avaliables = new Queue<Transform>(Quantity);
-                unavaliables = new List<Transform>(Quantity);
+                avaliables = new Queue<IPooledObject>(Quantity);
+                unavaliables = new List<IPooledObject>(Quantity);
 
                 var go = new GameObject();
                 go.name = Type.ToString();
@@ -133,9 +133,11 @@ namespace Break.Pool
 
                 for (int i = 0; i < Quantity; i++)
                 {
-                    var created = factory.Create(container.transform);
-                    created.gameObject.SetActive(false);
-                    avaliables.Enqueue(created);
+                    if (factory.TryCreate(out IPooledObject pooledObject, container.transform))
+                    {
+                        pooledObject.transform.gameObject.SetActive(false);
+                        avaliables.Enqueue(pooledObject);
+                    }
                 }
 
                 isInitialized = true;
@@ -148,8 +150,8 @@ namespace Break.Pool
 
                 inProcessing = true;
 
-                avaliables = new Queue<Transform>(Quantity);
-                unavaliables = new List<Transform>(Quantity);
+                avaliables = new Queue<IPooledObject>(Quantity);
+                unavaliables = new List<IPooledObject>(Quantity);
 
                 var go = new GameObject();
                 go.name = Type.ToString();
@@ -166,66 +168,78 @@ namespace Break.Pool
                     })
                     .Subscribe(_ =>
                     {
-                        var createdObject = factory.Create();
-                        createdObject.SetParent(container);
-                        createdObject.gameObject.SetActive(false);
+                        if (factory.TryCreate(out IPooledObject pooledObject, container.transform))
+                        {
+                            pooledObject.transform.gameObject.SetActive(false);
+                            avaliables.Enqueue(pooledObject);
+                            
+                            numberOfCreatedObjects++;
+                            numOfAvaliables++;
+                            avaliables.Enqueue(pooledObject);
+                        }
 
-                        numberOfCreatedObjects++;
-                        numOfAvaliables++;
-                        avaliables.Enqueue(createdObject);
                     });
             }
 
-            public Transform Get(bool activate)
+            public IPooledObject Get(bool activate)
             {
                 var pooledObject = avaliables.Count > 0
                                     ? avaliables.Dequeue()
                                     : CreateAnother();
                 unavaliables.Add(pooledObject);
 
-                pooledObject.gameObject.SetActive(activate);
+                pooledObject.transform.gameObject.SetActive(activate);
+                pooledObject.OnPullOut();
 
                 numOfAvaliables--;
                 numOfUnavaliables++;
+                pooledObject.transform.SetParent(null);
 
                 return pooledObject;
             }
 
-            public bool TryRemove(Transform pooledObject)
+            public bool TryRemove(Transform transform)
             {
-                if (!unavaliables.Remove(pooledObject))
+                var pooledObject = transform.GetComponent<IPooledObject>();
+
+                if (pooledObject != null && !unavaliables.Remove(pooledObject))
                 {
                     //Debug.LogError($"{pooledObject.name} does not exists in the pool <{Type}>");
                     return false;
                 }
 
-                pooledObject.SetParent(container);
-                pooledObject.gameObject.SetActive(false);
+                pooledObject.transform.SetParent(container);
+                pooledObject.transform.gameObject.SetActive(false);
+                pooledObject.OnPullIn();
 
                 avaliables.Enqueue(pooledObject);
                 return true;
             }
 
-            private Transform CreateAnother()
+            private IPooledObject CreateAnother()
             {
+                if (factory.TryCreate(out IPooledObject pooledObject, container.transform))
+                {
+                    pooledObject.transform.gameObject.SetActive(false);
+                    pooledObject.OnPullIn();
+                    Quantity++;
+                    return pooledObject;
+                }
 
-                var created = factory.Create(container.transform);
-                created.gameObject.SetActive(true);
-                Quantity++;
-                return created;
+                return null;
             }
 
             public void Clear()
             {
                 while (numOfAvaliables > 0)
                 {
-                    Destroy(avaliables.Dequeue());
+                    Destroy(avaliables.Dequeue().transform);
                     Quantity--;
                     numOfAvaliables--;
                 }
-                while(numOfUnavaliables > 0)
+                while (numOfUnavaliables > 0)
                 {
-                    Destroy(unavaliables[numOfUnavaliables - 1]);
+                    Destroy(unavaliables[numOfUnavaliables - 1].transform);
                     unavaliables.Remove(unavaliables[numOfUnavaliables - 1]);
                     Quantity--;
                     numOfUnavaliables--;
@@ -242,15 +256,15 @@ namespace Break.Pool
                     .Finally(() => inProcessing = false)
                     .Subscribe(_ =>
                     {
-                        if(numOfAvaliables > 0)
+                        if (numOfAvaliables > 0)
                         {
-                            Destroy(avaliables.Dequeue());
+                            Destroy(avaliables.Dequeue().transform);
                             numOfAvaliables--;
                             Quantity--;
                         }
-                        if(numOfUnavaliables > 0)
+                        if (numOfUnavaliables > 0)
                         {
-                            Destroy(unavaliables[numOfUnavaliables - 1]);
+                            Destroy(unavaliables[numOfUnavaliables - 1].transform);
                             unavaliables.Remove(unavaliables[numOfUnavaliables - 1]);
                             numOfUnavaliables--;
                             Quantity--;

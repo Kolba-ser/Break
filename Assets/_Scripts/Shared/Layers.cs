@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public sealed class Layers : Singleton<Layers>
+public sealed class Layers : MonoSingleton<Layers>
 {
     [SerializeField] private LayerMask groundLayer;
 

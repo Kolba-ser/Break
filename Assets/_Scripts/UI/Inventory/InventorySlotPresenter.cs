@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventorySlotPresenter : MonoBehaviour
+public class InventorySlotPresenter : MonoBehaviour, IPooledObject
 {
     [SerializeField] private Button dropBTN;
     [SerializeField] private Button equipBTN;
@@ -18,10 +18,14 @@ public class InventorySlotPresenter : MonoBehaviour
         name.text = itemModel.Info.name;
     }
 
-    private void OnDisable()
+    public void OnPullIn()
     {
         dropBTN.onClick.RemoveAllListeners();
         name.text = "";
+    }
+
+    public void OnPullOut()
+    {
     }
 
 }

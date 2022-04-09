@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<Dialogue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <node>
+    <message />
+    <spriteIndex>-1</spriteIndex>
+    <sendingDelay>1</sendingDelay>
+    <answers>
+      <answer toNode="1">
+        <text>Слышишь вася, шо ты тут забыла </text>
+        <spriteIndex>-1</spriteIndex>
+        <isEnd>true</isEnd>
+      </answer>
+      <answer toNode="4">
+        <text>привет</text>
+        <spriteIndex>-1</spriteIndex>
+        <isEnd>false</isEnd>
+      </answer>
+    </answers>
+  </node>
+  <node>
+    <message>Пошел ты нахер казел</message>
+    <spriteIndex>0</spriteIndex>
+    <sendingDelay>1</sendingDelay>
+    <answers />
+  </node>
+  <node>
+    <message>Привет</message>
+    <spriteIndex>-1</spriteIndex>
+    <sendingDelay>1</sendingDelay>
+    <answers>
+      <answer toNode="3">
+        <text>Как дела</text>
+        <spriteIndex>-1</spriteIndex>
+        <isEnd>false</isEnd>
+      </answer>
+      <answer toNode="1">
+        <text>Я а не послать ли мне тебя нахер </text>
+        <spriteIndex>-1</spriteIndex>
+        <isEnd>true</isEnd>
+      </answer>
+    </answers>
+  </node>
+  <node>
+    <message>Нормально, у тебя как </message>
+    <spriteIndex>-1</spriteIndex>
+    <sendingDelay>1</sendingDelay>
+    <answers>
+      <answer toNode="1">
+        <text>Четко</text>
+        <spriteIndex>-1</spriteIndex>
+        <isEnd>true</isEnd>
+      </answer>
+      <answer toNode="1">
+        <text>Отлично</text>
+        <spriteIndex>-1</spriteIndex>
+        <isEnd>true</isEnd>
+      </answer>
+    </answers>
+  </node>
+  <node>
+    <message />
+    <spriteIndex>-1</spriteIndex>
+    <sendingDelay>1</sendingDelay>
+    <answers>
+      <answer toNode="2">
+        <text>Не игнорь пж</text>
+        <spriteIndex>-1</spriteIndex>
+        <isEnd>false</isEnd>
+      </answer>
+    </answers>
+  </node>
+</Dialogue>

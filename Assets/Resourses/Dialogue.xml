@@ -1,0 +1,112 @@
+<dialogue>
+  <node index = "0">
+    <message>Young lady, I'm calling the police. You stole my heart!</message>
+    <answers>
+      <answer tonode = "3"> <text>Oh, that's so sweet.</text> </answer>
+      <answer tonode = "1"> <text>Where to return?</text> </answer>
+    </answers>
+  </node>
+  
+  <node index = "1">
+    <message>You can keep it.</message>
+    <answers>
+      <answer tonode = "2"> <text>I think I'll put it back.</text> </answer>
+      <answer tonode = "3"> <text>Well, that's nice of you.</text> </answer>
+    </answers>
+  </node>
+  
+  <node index = "2">
+    <message>You ruined the compliment!</message>
+    <result>false</result>
+  </node>
+  
+  <node index = "3">
+    <message>Yeah, that's nice.</message>
+    <answers>
+      <answer tonode="4"> <text>Has anyone ever told you that you're handsome?)</text> </answer>
+    </answers>
+  </node>
+  
+  <node index = "4">
+    <message>No, you go first.</message>
+    <answers>
+      <answer tonode="5"> <text>No, I won't. Bye</text> </answer>
+      <answer tonode="7"> <text>You're beautiful.</text> </answer>
+    </answers>
+  </node>
+  
+  <node index = "5">
+    <message>What???</message>
+    <answers>
+      <answer tonode="7"> <text>It's a joke. You're really handsome.</text> </answer>
+      <answer tonode="6"> <text>I don't like you.</text> </answer>
+    </answers>
+  </node>
+  
+  <node index = "6">
+    <message>Now you're mine too!</message>
+    <result>false</result>
+  </node>
+  
+  <node index = "7">
+    <message>You're beautiful, too. Do you want to take a ride on my boat?</message>
+    <answers>
+      <answer tonode="10">
+        <text>Wow cool. I don't mind.</text>
+      </answer>
+      <answer tonode="8">
+        <text>It's photoshop.</text>
+      </answer>
+    </answers>
+  </node>
+  
+  <node index = "8">
+    <message>No. It can't be.</message>
+    <answers>
+      <answer tonode="9">
+        <text>This is my friend's boat</text>
+      </answer>
+      <answer tonode="10">
+        <text>I agree, it seemed to me.</text>
+      </answer>
+    </answers>
+  </node>
+  
+  <node index = "9">
+    <message>You got me!</message>
+    <result>false</result>
+  </node>
+  
+  <node index = "10">
+    <message>Then let's meet tonight at the pier, shall we?</message>
+    <answers>
+      <answer tonode="13">
+        <text>Good</text>
+      </answer>
+      <answer tonode="11">
+        <text>No, I can't, I've got a skating rink in fortnite/lol</text>
+      </answer>
+    </answers>
+  </node>
+
+  <node index = "11">
+    <message>Would you change your mind? I have a surprise for you</message>
+    <answers>
+      <answer tonode="13">
+        <text>I'll be there.</text>
+      </answer>
+      <answer tonode="12">
+        <text>I've already started the game. So far</text>
+      </answer>
+    </answers>
+  </node>
+
+  <node index = "12">
+    <message>I hope you lose!</message>
+    <result>false</result>
+  </node>
+
+  <node index = "13">
+    <result>true</result>
+  </node>
+</dialogue>
