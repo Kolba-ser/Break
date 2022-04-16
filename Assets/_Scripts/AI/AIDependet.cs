@@ -11,7 +11,7 @@ public abstract class AIDependet : MonoBehaviour, IKillable
     protected ITargetable target;
     protected NavMeshAgent agent;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
     }

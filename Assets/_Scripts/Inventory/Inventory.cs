@@ -25,6 +25,7 @@ public sealed class Inventory : InventoryBase<Weapon>, IInventoryModel
         {
             if(!equipable.IsPlaced && freeSlot.TryEquip(equipable, item))
             {
+                item.gameObject.SetActive(false);
                 OnAdded(item, freeSlot.Index);
                 return true;
             }

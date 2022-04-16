@@ -4,7 +4,7 @@ using Break.Weapons;
 using System;
 using UnityEngine;
 
-public sealed class EquipmentController : MonoBehaviour
+public sealed class Equipment : MonoBehaviour
 {
     [SerializeField] private WeaponController weaponController;
     [SerializeField] private InventoryBase<Weapon> inventory;
@@ -20,7 +20,7 @@ public sealed class EquipmentController : MonoBehaviour
 
     private void OnRemove(IInventoryItemModel<Weapon> itemModel, int slotIndex)
     {
-        if (weaponController.ActiveWeapon.Equals(itemModel.Component))
+        if (weaponController.IsWeaponUsed && weaponController.ActiveWeapon.Equals(itemModel.Component))
         {
             weaponController.ResetWeapon();
         }

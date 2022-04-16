@@ -8,13 +8,15 @@ using UnityEngine;
 public sealed class Harpoon : Weapon
 {
     [SerializeField] private LineRenderer rope;
+    [SerializeField] private float throwForce;
 
     [Space(20)]
     [SerializeField] private HarpoonSettings settings;
 
     private CinemachineImpulseSource impulseSource;
     private Graspable target;
-    
+    private Rigidbody rigidbody;
+
     private RaycastHit hit;
     
     private IDisposable grappling;
@@ -22,9 +24,10 @@ public sealed class Harpoon : Weapon
     private void Awake()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
-    public override void StartShoot(Action callback = null)
+    public override void StartShoot(Action<float> callback = null)
     {
         Physics.Raycast(shotPoint.position, shotPoint.forward, out hit, settings.RopeLength, settings.Graspable);
 
@@ -38,11 +41,11 @@ public sealed class Harpoon : Weapon
             target.Join(direction, settings.GrappingForce);
             ShowRope();
             aim.LookAtTarget(target.transform);
-            callback?.Invoke();
+            callback?.Invoke(recoilForce);
             impulseSource.GenerateImpulse();
         }
     }
-    public override void StopShoot(Action callback = null)
+    public override void StopShoot(Action<float> callback = null)
     {
         base.StopShoot();
 
@@ -71,6 +74,19 @@ public sealed class Harpoon : Weapon
         rope.enabled = false;
     }
 
+    public override void Put(Transform parent)
+    {
+        rigidbody.isKinematic = true;
+        rigidbody.useGravity = false;
+        base.Put(parent);
+    }
+    public override void PutAway()
+    {
+        rigidbody.isKinematic = false;
+        rigidbody.useGravity = true;
+        rigidbody.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        base.PutAway();
+    }
 
 }
 

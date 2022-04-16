@@ -62,10 +62,30 @@ public class InputController : MonoSingleton<InputController>
         inputControlls.Player.Fire.performed += _ => callback();
         inputControlls.Player.Fire.canceled += _ => callback();
     }
-
+    /// <summary>
+    /// Вызывается при нажатие на кнопку
+    /// </summary>
+    /// <param name="callback"></param>
     public void OnJump(Action callback)
     {
         inputControlls.Player.Jump.performed += _ => callback();
+    }
+    /// <summary>
+    /// Вызывыется при нажатие на кнопку деша
+    /// </summary>
+    /// <param name="callback"></param>
+    public void OnDash(Action callback)
+    {
+        inputControlls.Player.Dash.performed += _ => callback();
+    }
+
+    /// <summary>
+    /// Вызывается при нажатие на кнопку открытия инвентаря
+    /// </summary>
+    public void OnInventory(Action callbackOnPerformed, Action callbackOnCanceled)
+    {
+        inputControlls.Player.Inventory.performed += _ => callbackOnPerformed();
+        inputControlls.Player.Inventory.canceled += _ => callbackOnCanceled();
     }
 
     private void OnEnable()

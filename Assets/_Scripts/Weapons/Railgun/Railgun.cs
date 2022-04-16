@@ -9,8 +9,8 @@ using UniRx;
 [RequireComponent(typeof(CinemachineImpulseSource))]
 public sealed class Railgun : Weapon
 {
-    [SerializeField] private float minforce;
-    [SerializeField] private float maxforce;
+    [SerializeField] private float minForce;
+    [SerializeField] private float maxForce;
     [SerializeField] private float accambulationRate;
     
     [Header("OnPutAway")]
@@ -19,7 +19,8 @@ public sealed class Railgun : Weapon
 
     private CinemachineImpulseSource impulseSource;
 
-    private float currentForce;
+    private float currentLaunchForce;
+    private float currentRecoilForce;
 
     private IDisposable accambulating;
 
@@ -30,44 +31,46 @@ public sealed class Railgun : Weapon
         impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
-    public override void StartShoot(Action callback = null)
+    public override void StartShoot(Action<float> recoilCallback = null)
     {
         base.StartShoot();
-        currentForce = minforce;
+        currentLaunchForce = minForce;
         if (PoolSystem.Instance.CanGet<Armature>())
         {
             accambulating = Observable.EveryUpdate().TakeUntilDisable(gameObject)
                 .Subscribe(_ =>
                 {
-                    currentForce = Mathf.Lerp(currentForce, maxforce, accambulationRate * Time.deltaTime);
+                    currentLaunchForce = Mathf.Lerp(currentLaunchForce, maxForce, accambulationRate * Time.deltaTime);
                 });
         }
     }
 
-    public override void StopShoot(Action callback = null)
+    public override void StopShoot(Action<float> recoilCallback = null)
     {
         base.StopShoot();
         accambulating?.Dispose();
-
         if (PoolSystem.Instance.TryGet(out Armature armature))
         {
             armature.transform.position = shotPoint.position;
             armature.transform.rotation = shotPoint.rotation;
-            armature.Launch(damage * MULTIPLIER, currentForce * transform.forward);
+            armature.Launch(damage * MULTIPLIER, currentLaunchForce * transform.forward);
             impulseSource.GenerateImpulse();
-            callback?.Invoke();
+            currentRecoilForce = Mathf.Clamp(recoilForce * currentLaunchForce.InPercent(minForce, maxForce) , 0, RecoilForce);
+            recoilCallback?.Invoke(currentRecoilForce);
         }
     }
 
     public override void Put(Transform parent)
     {
         rigidbody.isKinematic = true;
+        rigidbody.useGravity = false;
         base.Put(parent);
     }
 
     public override void PutAway()
     {
         rigidbody.isKinematic = false;
+        rigidbody.useGravity = true;
         rigidbody.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         base.PutAway();
     }

@@ -36,7 +36,7 @@ namespace Break.Pool
             return false;
         }
 
-        public bool TryRemove<T>(Transform pooledObject)
+        public bool TryRemove<T>(IPooledObject pooledObject)
         {
             var targetType = typeof(T);
             var targetPool = pools.Find(_ => _.Type == targetType);
@@ -198,10 +198,8 @@ namespace Break.Pool
                 return pooledObject;
             }
 
-            public bool TryRemove(Transform transform)
+            public bool TryRemove(IPooledObject pooledObject)
             {
-                var pooledObject = transform.GetComponent<IPooledObject>();
-
                 if (pooledObject != null && !unavaliables.Remove(pooledObject))
                 {
                     //Debug.LogError($"{pooledObject.name} does not exists in the pool <{Type}>");
@@ -211,6 +209,9 @@ namespace Break.Pool
                 pooledObject.transform.SetParent(container);
                 pooledObject.transform.gameObject.SetActive(false);
                 pooledObject.OnPullIn();
+
+                numOfAvaliables++;
+                numOfUnavaliables--;
 
                 avaliables.Enqueue(pooledObject);
                 return true;

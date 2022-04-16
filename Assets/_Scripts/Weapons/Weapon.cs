@@ -10,12 +10,12 @@ namespace Break.Weapons
     {
         [SerializeField] private WeaponInfo info;
         [SerializeField] protected Transform shotPoint;
+        [Space(20)]
         [SerializeField] protected float recoilForce;
         [SerializeField] protected float damage;
+        [SerializeField] protected float rotationSpeed = 5f;
 
         protected Aim aim;
-
-        private bool isPlaced;
 
         private const float equipDelay = 1f;
 
@@ -26,36 +26,40 @@ namespace Break.Weapons
         public bool IsAimSet => aim != null;
         public float RecoilForce => recoilForce;
         public bool IsActive => gameObject.activeSelf;
-        bool IEquipable.IsPlaced => isPlaced;
+        public bool IsPlaced => transform.parent != null;
+        public float RotationSpeed => rotationSpeed * Time.deltaTime;
 
         public ItemInfoBase Info => info;
 
         public Weapon Component => this;
 
+        private void Awake()
+        {
+            if (IsPlaced)
+                Put(transform.parent);
+        }
 
         public virtual void Put(Transform parent)
         {
-            if (isPlaced)
+            if (IsPlaced)
                 return;
 
-            isPlaced = true;
             transform.SetParent(parent);
             transform.position = parent.position;
         }
         public virtual void PutAway()
         {
             gameObject.SetActive(true);
-            transform.SetParent(null);
-
+            
             Observable.Timer(equipDelay.InSec()).TakeUntilDisable(gameObject)
-                .Subscribe(_ => isPlaced = false);
+                .Subscribe(_ => transform.SetParent(null));
         }
 
-        public virtual void StartShoot(Action callback = null)
+        public virtual void StartShoot(Action<float> recoilCallback = null)
         {
             IsShooting = true;
         }
-        public virtual void StopShoot(Action callback = null)
+        public virtual void StopShoot(Action<float> recoilCallback = null)
         {
             IsShooting = false;
         }
@@ -75,7 +79,7 @@ namespace Break.Weapons
         }
         public void RemoveAim()
         {
-            aim.Deactivate();
+            aim.Dispose();
             aim = null;
         }
 

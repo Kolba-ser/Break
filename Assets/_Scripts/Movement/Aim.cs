@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 
 
-public sealed class Aim : MonoBehaviour
+public sealed class Aim : MonoBehaviour, IDisposable
 {
     [SerializeField] private bool rotateOnStart;
     [SerializeField] private LayerMask targetLayers;
@@ -12,16 +12,18 @@ public sealed class Aim : MonoBehaviour
     private Camera mainCamera;
 
     private Weapon activeWeapon;
+
+    private bool isPaused => PauseController.Instance.IsPaused;
+
     public Weapon Weapon
     {
-        get { return activeWeapon; }
+        get
+        {
+            return activeWeapon;
+        }
         set
         {
-            if (value != null)
-            {
-                LookAtMouse();
-            }
-            else
+            if (value == null)
             {
                 rotation?.Dispose();
             }
@@ -49,13 +51,13 @@ public sealed class Aim : MonoBehaviour
 
         rotation = Observable.EveryFixedUpdate()
         .TakeUntilDisable(gameObject)
-        .TakeWhile(_ => activeWeapon != null)
+        .TakeUntilDisable(activeWeapon)
         .Subscribe(_ =>
         {
             var ray = mainCamera.ScreenPointToRay(InputController.Instance.MousePosition);
             if (Physics.Raycast(ray, out var hit, targetLayers))
             {
-                activeWeapon.transform.LookAt(hit.point);
+                activeWeapon.Direct(hit.point);
             }
         });
     }
@@ -66,19 +68,18 @@ public sealed class Aim : MonoBehaviour
         rotation = Observable.EveryFixedUpdate()
         .TakeUntilDisable(gameObject)
         .TakeUntilDisable(target)
-        .TakeWhile(_ => activeWeapon != null)
+        .TakeUntilDisable(activeWeapon)
         .Subscribe(_ =>
         {
-            activeWeapon.transform.LookAt(target);
+            activeWeapon.Direct(target);
         });
 
     }
 
-    public void Deactivate()
+    public void Dispose()
     {
         rotation?.Dispose();
     }
-
 
 }
 

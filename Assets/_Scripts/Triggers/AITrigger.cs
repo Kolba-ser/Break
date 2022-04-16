@@ -22,7 +22,6 @@ public sealed class AITrigger : MonoBehaviour, IPursuer, IKillable
     }
     private void OnTriggerExit(Collider other)
     {
-
         if (target != null && other.transform.Equals(target.transform))
         {
             target.TakeOff(this);

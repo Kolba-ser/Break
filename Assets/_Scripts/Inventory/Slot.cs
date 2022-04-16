@@ -31,7 +31,7 @@ public class Slot<T> : MonoBehaviour
     {
         if (!isFree)
             return false;
-        Debug.Log(name);
+
         this.item = item;
         this.equipable = equipable;
         equipable.Put(transform);

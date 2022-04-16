@@ -10,7 +10,7 @@ public abstract class Projectile : MonoBehaviour, IPooledObject
 
     protected float damage;
 
-    protected void ReturnToPool<T>(Transform pooledObject, Action callback = null)
+    protected void ReturnToPool<T>(IPooledObject pooledObject, Action callback = null)
     {
         if (PoolSystem.Instance.TryRemove<T>(pooledObject))
         {

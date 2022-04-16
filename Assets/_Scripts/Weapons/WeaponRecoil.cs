@@ -16,9 +16,9 @@ public sealed class WeaponRecoil : MonoBehaviour
         weaponController.Unsubscribe(OnShot);
     }
 
-    private void OnShot()
+    private void OnShot(float recoilForce)
     {
-        rigidbody.AddForce(weaponController.ActiveWeapon.RecoilForce * -weaponController.ActiveWeapon.transform.forward, ForceMode.Impulse);
+        rigidbody.AddForce(recoilForce * -weaponController.ActiveWeapon.transform.forward, ForceMode.Impulse);
     }
 }
 

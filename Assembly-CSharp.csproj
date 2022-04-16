@@ -61,6 +61,8 @@
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\SlotFactory.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponPickupController.cs" />
     <Compile Include="Assets\_Scripts\Movement\PlayerMovement.cs" />
+    <Compile Include="Assets\_Scripts\SO\Images\Images.cs" />
+    <Compile Include="Assets\_Scripts\Events\EventHolder.cs" />
     <Compile Include="Assets\_Scripts\UI\Inventory\InventorySlotPresenter.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Projectile.cs" />
     <Compile Include="Assets\Settings\Input\Input.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\Spider.cs" />
     <Compile Include="Assets\_Scripts\Communication\ChatPresenter.cs" />
     <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryModel.cs" />
+    <Compile Include="Assets\_Scripts\Shared\Singletone.cs" />
     <Compile Include="Assets\_Scripts\Utility\XML\SerializerXML.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryBase.cs" />
     <Compile Include="Assets\_Scripts\Movement\Aim.cs" />
@@ -76,7 +79,7 @@
     <Compile Include="Assets\_Scripts\Triggers\WeaponPickupTrigger.cs" />
     <Compile Include="Assets\_Scripts\Pool\Interfaces\IPooledObject.cs" />
     <Compile Include="Assets\_Scripts\UI\Inventory\InventoryPresenter.cs" />
-    <Compile Include="Assets\_Scripts\Control\EquipmentController.cs" />
+    <Compile Include="Assets\_Scripts\Control\Equipment.cs" />
     <Compile Include="Assets\_Scripts\Triggers\PickupTrigger.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
     <Compile Include="Assets\_Scripts\Control\AimController.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Assets\_Scripts\Shared\Extensions.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
     <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
+    <Compile Include="Assets\_Scripts\SO\Images\DialogueImages.cs" />
     <Compile Include="Assets\_Scripts\AI\Chaser.cs" />
     <Compile Include="Assets\_Scripts\Shared\MonoSingleton.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
@@ -93,7 +97,8 @@
     <Compile Include="Assets\_Scripts\Communication\Message.cs" />
     <Compile Include="Assets\_Scripts\AI\AIDependet.cs" />
     <Compile Include="Assets\_Scripts\Triggers\AITrigger.cs" />
-    <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
+    <Compile Include="Assets\_Scripts\Control\PlayerWeaponController.cs" />
+    <Compile Include="Assets\_Scripts\Events\GlobalEvent.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Damagable.cs" />
     <Compile Include="Assets\_Scripts\SO\ItemInfo\ItemInfoBase.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryModel.cs" />
@@ -119,11 +124,12 @@
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\SO\Images\Images.cs" />
-    <Compile Include="Assets\_Scripts\SO\Images\DialogueImages.cs" />
-    <Compile Include="Assets\_Scripts\Shared\Singletone.cs" />
-    <Compile Include="Assets\_Scripts\Events\EventHolder.cs" />
-    <Compile Include="Assets\_Scripts\Events\GlobalEvent.cs" />
+    <Compile Include="Assets\_Scripts\AI\AIWeaponConroller.cs" />
+    <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
+    <Compile Include="Assets\_Scripts\UI\UIMenu.cs" />
+    <Compile Include="Assets\_Scripts\Pause\IPauseHandler.cs" />
+    <Compile Include="Assets\_Scripts\Pause\PauseController.cs" />
+    <Compile Include="Assets\_Scripts\UI\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

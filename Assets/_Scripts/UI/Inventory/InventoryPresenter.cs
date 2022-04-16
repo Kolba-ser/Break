@@ -5,27 +5,35 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class InventoryPresenter : MonoBehaviour
+public sealed class InventoryPresenter : UIMenu
 {
     [SerializeField] private InventoryBase<Weapon> inventoryModel;
     [Space(20)]
 
     [SerializeField] private Transform content;
-    [SerializeField] private WeaponController weaponController;
+    [SerializeField] private PlayerWeaponController weaponController;
 
     private List<InventorySlotPresenter> slots;
+    private Canvas canvas;
+
+    public override Type Type => typeof(InventoryPresenter);
 
     private void Awake()
     {
         slots = new List<InventorySlotPresenter>(inventoryModel.Capacity);
+        canvas = GetComponent<Canvas>();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         for (int i = 0; i < inventoryModel.Capacity; i++)
         {
             AddSlotPresenter();
         }
+
+        InputController.Instance.OnInventory(Show, Hide);
     }
 
     private void OnEnable()
@@ -39,11 +47,21 @@ public sealed class InventoryPresenter : MonoBehaviour
         inventoryModel.OnRemovedEvent -= OnRemoved;
     }
 
+    public override void Show()
+    {
+        canvas.enabled = true;
+        base.Show();
+    }
+    public override void Hide()
+    {
+        canvas.enabled = false;
+        base.Hide();
+    }
+
     private void OnRemoved(IInventoryItemModel<Weapon> itemModel, int slotIndex)
     {
         slots[slotIndex].gameObject.SetActive(false);
     }
-
     private void OnAdded(IInventoryItemModel<Weapon> itemModel, int slotIndex)
     {
         slots[slotIndex].Initialize(itemModel, Drop, Equip);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,9 +8,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform body;
 
-    [SerializeField] private float speed;
-    [SerializeField] private float accelerations;
+    [Header("Speed")]
+    [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSpeed;
+    
+    [Header("Dash")]
+    [SerializeField] private float dashForce;
+    [SerializeField] private float dashCooldown;
+
+    [Header("Jump")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float distanceFromGround;
 
@@ -17,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rigidbody;
     private RaycastHit hit;
 
-    private float MIN_DISTANCE_FROM_TARGET = 0.12f;
+    private bool cooldownActive;
+
+    private bool isPaused => PauseController.Instance.IsPaused;
 
     private void Awake()
     {
@@ -28,18 +37,42 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         InputController.Instance.OnJump(Jump);
+        InputController.Instance.OnDash(Dash);
     }
 
     private void Jump()
     {
-        if (CanJump())
+        if (!isPaused && CanJump())
         {
             rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
     }
 
+    private void Dash()
+    {
+        if (!isPaused && !cooldownActive)
+        {
+            cooldownActive = true;
+            if (InputController.Instance.MoveKeyboardInput.x != 0)
+            {
+                rigidbody.AddForce(transform.right * InputController.Instance.MoveKeyboardInput.x * dashForce, ForceMode.Impulse);
+            }
+            if (InputController.Instance.MoveKeyboardInput.z != 0)
+            {
+                rigidbody.AddForce(transform.forward * InputController.Instance.MoveKeyboardInput.z * dashForce, ForceMode.Impulse);
+            }
+
+            Observable.Timer(dashCooldown.InSec()).TakeUntilDisable(gameObject)
+                .Finally(() => cooldownActive = false)
+                .Subscribe();
+        }
+    }
+
     private void FixedUpdate()
     {
+        if (isPaused)
+            return;
+
         var ray = mainCamera.ScreenPointToRay(InputController.Instance.MousePosition);
         var up = rigidbody.rotation * Vectors.Up;
 
@@ -81,4 +114,5 @@ public class PlayerMovement : MonoBehaviour
     {
         return (rigidbody.position - hit.point).magnitude < distanceFromGround;
     }
+
 }

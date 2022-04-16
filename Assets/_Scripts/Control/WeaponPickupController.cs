@@ -23,7 +23,10 @@ namespace Break.Control
 
         private void OnPickedUp(Weapon weapon)
         {
-            controller.SetWeapon(weapon);
+            if (!controller.IsWeaponUsed)
+            {
+                controller.SetWeapon(weapon);
+            }
         }
     }
 }

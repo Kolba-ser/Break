@@ -1530,9 +1530,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4292917425908180}
-  speed: 1
-  accelerations: 1
+  moveSpeed: 1
   rotationSpeed: 7
+  dashForce: 40
+  dashCooldown: 2
   jumpForce: 30
   distanceFromGround: 0.3
 --- !u!114 &7702708860770398464

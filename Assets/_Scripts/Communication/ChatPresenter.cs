@@ -75,7 +75,7 @@ public sealed class ChatPresenter : MonoBehaviour
         int iterations = answers.Count;
         for (int i = 0; i < iterations; i++)
         {
-            PoolSystem.Instance.TryRemove<AnswerButton>(answers.Dequeue().transform);
+            PoolSystem.Instance.TryRemove<AnswerButton>(answers.Dequeue());
         }
     }
 

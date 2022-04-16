@@ -6,12 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public sealed class Chaser : AIDependet, IKillable
 {
-    private Rigidbody rigidbody;
-
     private IDisposable chasing;
     private IDisposable rotation;
 
-    public void Chase()
+    private void Chase()
     {
         chasing?.Dispose();
         rotation?.Dispose();

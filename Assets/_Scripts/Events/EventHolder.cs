@@ -4,13 +4,16 @@ using System;
 
 public sealed class EventHolder : Singletone<EventHolder>, IDisposable
 {
-    private GlobalEvent onDialogueStartEvent = new GlobalEvent();
+    private GlobalEvent onMenuOpenedEvent = new GlobalEvent();
+    private GlobalEvent onMenuClosedEvent = new GlobalEvent();
 
-    public GlobalEvent OnDialogueStartEvent => onDialogueStartEvent;
+    public GlobalEvent OnMenuOpenedEvent => onMenuOpenedEvent;
+    public GlobalEvent OnMenuClosedEvent => onMenuClosedEvent;
 
     public void Dispose()
     {
-        onDialogueStartEvent.Dispose();
+        onMenuOpenedEvent.Dispose();
+        onMenuClosedEvent.Dispose();
     }
 }
 

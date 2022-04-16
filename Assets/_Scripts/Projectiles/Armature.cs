@@ -27,7 +27,7 @@ namespace Break.Projectiles
             Observable.Timer(lifeTime.InSec())
                 .Subscribe(_ =>
                 {
-                    ReturnToPool<Armature>(transform, OnReturned);
+                    ReturnToPool<Armature>(this, OnReturned);
                 });
         }
 

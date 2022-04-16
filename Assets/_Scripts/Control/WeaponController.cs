@@ -2,18 +2,25 @@
 using System;
 using UnityEngine;
 
-public sealed class WeaponController : MonoBehaviour
-{
-    [SerializeField] private Weapon activeWeapon;
-    [SerializeField] private Aim aim;
 
-    private Action OnShot;
+public abstract class WeaponController : MonoBehaviour
+{
+    [SerializeField] protected Weapon activeWeapon;
+    [SerializeField] protected Aim aim;
+
+    protected Action<float> OnShot;
 
     public Weapon ActiveWeapon => activeWeapon;
+    public bool IsWeaponUsed => activeWeapon != null;
 
-    private void Start()
+    public void Subscribe(Action<float> action)
     {
-        InputController.Instance.OnFire(OnFireStart, OnFireStop);
+        OnShot += action;
+    }
+
+    public void Unsubscribe(Action<float> action)
+    {
+        OnShot -= action;
     }
 
     public void SetWeapon(Weapon weapon)
@@ -33,40 +40,16 @@ public sealed class WeaponController : MonoBehaviour
         activeWeapon.SetAim(aim);
         activeWeapon.Activate();
         aim.Weapon = weapon;
+        aim.LookAtMouse();
     }
     public void ResetWeapon()
     {
         if (activeWeapon != null)
         {
             activeWeapon.RemoveAim();
+            aim.Weapon = null;
             activeWeapon = null;
         }
-    }
-
-    private void OnFireStart()
-    {
-        if (activeWeapon == null || activeWeapon.IsShooting || !activeWeapon.IsActive)
-            return;
-
-        activeWeapon.StartShoot(OnShot);
-    }
-
-    private void OnFireStop()
-    {
-        if (activeWeapon == null || !activeWeapon.IsShooting)
-            return;
-
-        activeWeapon.StopShoot(OnShot);
-    }
-
-    public void Subscribe(Action action)
-    {
-        OnShot += action;
-    }
-
-    public void Unsubscribe(Action action)
-    {
-        OnShot -= action;
     }
 
 }
