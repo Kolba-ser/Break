@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}</ProjectGuid>
+    <ProjectGuid>{CE812993-1846-DCE9-88A0-C01E79DEE83A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>UniTask.Addressables</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -56,122 +56,10 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Scripts\Triggers\Interfaces\IPursuer.cs" />
-    <Compile Include="Assets\_Scripts\SO\Factories\Pool\ArmatureFactory.cs" />
-    <Compile Include="Assets\_Scripts\SO\Factories\Pool\SlotFactory.cs" />
-    <Compile Include="Assets\_Scripts\Control\WeaponPickupController.cs" />
-    <Compile Include="Assets\_Scripts\Movement\PlayerMovement.cs" />
-    <Compile Include="Assets\_Scripts\SO\Images\Images.cs" />
-    <Compile Include="Assets\_Scripts\Events\EventHolder.cs" />
-    <Compile Include="Assets\_Scripts\UI\Inventory\InventorySlotPresenter.cs" />
-    <Compile Include="Assets\_Scripts\Projectiles\Projectile.cs" />
-    <Compile Include="Assets\Settings\Input\Input.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\Railgun\Railgun.cs" />
-    <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\Spider.cs" />
-    <Compile Include="Assets\_Scripts\Communication\ChatPresenter.cs" />
-    <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryModel.cs" />
-    <Compile Include="Assets\_Scripts\Shared\Singletone.cs" />
-    <Compile Include="Assets\_Scripts\Utility\XML\SerializerXML.cs" />
-    <Compile Include="Assets\_Scripts\Inventory\InventoryBase.cs" />
-    <Compile Include="Assets\_Scripts\Movement\Aim.cs" />
-    <Compile Include="Assets\_Scripts\SO\Factories\Pool\PoolFactory.cs" />
-    <Compile Include="Assets\_Scripts\AI\AIWeaponConroller.cs" />
-    <Compile Include="Assets\_Scripts\Communication\Dialogue.cs" />
-    <Compile Include="Assets\_Scripts\Triggers\WeaponPickupTrigger.cs" />
-    <Compile Include="Assets\_Scripts\Pool\Interfaces\IPooledObject.cs" />
-    <Compile Include="Assets\_Scripts\UI\Inventory\InventoryPresenter.cs" />
-    <Compile Include="Assets\_Scripts\Pause\IPauseHandler.cs" />
-    <Compile Include="Assets\_Scripts\Control\Equipment.cs" />
-    <Compile Include="Assets\_Scripts\Pause\PauseController.cs" />
-    <Compile Include="Assets\_Scripts\Triggers\PickupTrigger.cs" />
-    <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
-    <Compile Include="Assets\_Scripts\UI\UIController.cs" />
-    <Compile Include="Assets\_Scripts\Control\AimController.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\IKillable.cs" />
-    <Compile Include="Assets\_Scripts\Shared\Extensions.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
-    <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
-    <Compile Include="Assets\_Scripts\SO\Images\DialogueImages.cs" />
-    <Compile Include="Assets\_Scripts\AI\Chaser.cs" />
-    <Compile Include="Assets\_Scripts\Shared\MonoSingleton.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
-    <Compile Include="Assets\_Scripts\Utility\XML\UnityXmlHelper.cs" />
-    <Compile Include="Assets\_Scripts\SO\Factories\Pool\AnswerButtonFactory.cs" />
-    <Compile Include="Assets\_Scripts\Communication\AnswerButton.cs" />
-    <Compile Include="Assets\_Scripts\Communication\Message.cs" />
-    <Compile Include="Assets\_Scripts\AI\AIDependet.cs" />
-    <Compile Include="Assets\_Scripts\Triggers\AITrigger.cs" />
-    <Compile Include="Assets\_Scripts\Control\PlayerWeaponController.cs" />
-    <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
-    <Compile Include="Assets\_Scripts\Events\GlobalEvent.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\Damagable.cs" />
-    <Compile Include="Assets\_Scripts\SO\ItemInfo\ItemInfoBase.cs" />
-    <Compile Include="Assets\_Scripts\UI\UIMenu.cs" />
-    <Compile Include="Assets\_Scripts\Inventory\InventoryModel.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
-    <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
-    <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />
-    <Compile Include="Assets\_Scripts\SO\Factories\Pool\MessageFactory.cs" />
-    <Compile Include="Assets\_Scripts\Units\Direction.cs" />
-    <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryItemModel.cs" />
-    <Compile Include="Assets\_Scripts\Inventory\Slot.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\Pursued.cs" />
-    <Compile Include="Assets\_Scripts\SO\Factories\FactoryBase.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\Interfaces\ITargetable.cs" />
-    <Compile Include="Assets\_Scripts\Shared\InputController.cs" />
-    <Compile Include="Assets\_Scripts\Shared\Layers.cs" />
-    <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegTarget.cs" />
-    <Compile Include="Assets\_Scripts\Inventory\IEquipable.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\Characteristic.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\Harpoon\Harpoon.cs" />
-    <Compile Include="Assets\_Scripts\SO\ItemInfo\WeaponInfo.cs" />
-    <Compile Include="Assets\_Scripts\Inventory\Inventory.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
-    <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\StateMachine.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\Interfaces\IState.cs" />
-    <Compile Include="Assets\_Scripts\UI\StatesView\MainMenuView.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\MainMenuState.cs" />
-    <Compile Include="Assets\_Scripts\Services\Interface\IGameService.cs" />
-    <Compile Include="Assets\_Scripts\Services\GameService.cs" />
-    <Compile Include="Assets\_Scripts\Services\ServiceInstaller.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\LevelState.cs" />
-    <Compile Include="Assets\_Scripts\UI\StatesView\LevelView.cs" />
-    <Compile Include="Assets\_Scripts\SO\Levels\LevelDefinition.cs" />
-    <Compile Include="Assets\_Scripts\Services\LevelsDatabase.cs" />
-    <Compile Include="Assets\_Scripts\Services\Interface\ILevelsService.cs" />
-    <Compile Include="Assets\_Scripts\UI\StatesView\LoadingView.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelState.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelBase.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\LoadMainMenuState.cs" />
+    <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniTask\UniTask-master\src\UniTask\Assets\Plugins\UniTask\Runtime\External\Addressables\AddressablesAsyncExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\_Shaders\Circle.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\Resources\Dialogue_lvl1.xml" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\Resources\Dialogue.xml" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniTask\UniTask-master\src\UniTask\Assets\Plugins\UniTask\Runtime\External\Addressables\UniTask.Addressables.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -417,8 +305,26 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.14f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.14f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.14f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@0.15.0-preview.21\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.YamlDotNet">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.4\Unity.Burst.Unsafe.dll</HintPath>
@@ -426,11 +332,17 @@
     <Reference Include="Unity.Burst.Cecil.Mdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.4\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.IonicZip">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.4\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.4\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Rocks">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.4\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
@@ -816,217 +728,17 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.14f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Transforms.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Transforms.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Properties">
-      <HintPath>Library\ScriptAssemblies\Unity.Properties.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Serialization">
-      <HintPath>Library\ScriptAssemblies\Unity.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.CacheServer">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Hybrid.EndToEnd.Tests">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Hybrid.EndToEnd.Tests.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Properties.UI.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Properties.UI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Scenes">
-      <HintPath>Library\ScriptAssemblies\Unity.Scenes.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Extensions">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Transforms">
-      <HintPath>Library\ScriptAssemblies\Unity.Transforms.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Animation.Rigging.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Animation.Rigging.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics">
-      <HintPath>Library\ScriptAssemblies\Unity.Physics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Scenes.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Scenes.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Extensions.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.BuildUtils">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.BuildUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Physics.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Jobs.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Jobs.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Physics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Animation.Rigging">
-      <HintPath>Library\ScriptAssemblies\Unity.Animation.Rigging.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Jobs">
-      <HintPath>Library\ScriptAssemblies\Unity.Jobs.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Deformations">
-      <HintPath>Library\ScriptAssemblies\Unity.Deformations.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Properties.UI">
-      <HintPath>Library\ScriptAssemblies\Unity.Properties.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ScriptableBuildPipeline">
-      <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Serialization.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Serialization.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UniRx.csproj">
-      <Project>{4ECFC274-CAE2-2BDC-E967-C15D74FCC20F}</Project>
-      <Name>UniRx</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.Addressables.csproj">
-      <Project>{CE812993-1846-DCE9-88A0-C01E79DEE83A}</Project>
-      <Name>UniTask.Addressables</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.DOTween.csproj">
-      <Project>{5681A450-1EF8-817F-1072-A721F2A17811}</Project>
-      <Name>UniTask.DOTween</Name>
-    </ProjectReference>
     <ProjectReference Include="UniTask.csproj">
       <Project>{87275BA5-198B-C4F0-98D9-3C623D18F184}</Project>
       <Name>UniTask</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.TextMeshPro.csproj">
-      <Project>{440E6BD1-B52F-D516-5B54-3EB5FC27705A}</Project>
-      <Name>UniTask.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.Linq.csproj">
-      <Project>{002A5BC2-4559-2AD7-E6FC-D191BC57FE50}</Project>
-      <Name>UniTask.Linq</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

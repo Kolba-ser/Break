@@ -33,9 +33,11 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
         {
             Debug.LogError($"Duplicated Singletone {typeof(T)}");
         }
+
+        LateAwake();
     }
 
-
+    protected virtual void LateAwake(){}
 
 }
 
