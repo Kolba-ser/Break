@@ -149,8 +149,8 @@
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\Operators\OfType.cs" />
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableAnimatorTrigger.cs" />
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\Observable.Conversions.cs" />
-    <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\Operators\First.cs" />
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\Disposables\ICancelable.cs" />
+    <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\Operators\First.cs" />
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\LogEntryExtensions.cs" />
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableEndDragTrigger.cs" />
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniRx\UniRx-master\Assets\Plugins\UniRx\Scripts\Operators\Catch.cs" />

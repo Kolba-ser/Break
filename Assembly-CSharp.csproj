@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Triggers\Interfaces\IPursuer.cs" />
+    <Compile Include="Assets\_Scripts\UI\StatesView\LoadingView.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\ArmatureFactory.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\SlotFactory.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponPickupController.cs" />
@@ -72,6 +73,9 @@
     <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryModel.cs" />
     <Compile Include="Assets\_Scripts\Shared\Singletone.cs" />
     <Compile Include="Assets\_Scripts\Utility\XML\SerializerXML.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\States\LevelState.cs" />
+    <Compile Include="Assets\_Scripts\SO\Levels\LevelDefinition.cs" />
+    <Compile Include="Assets\_Scripts\Services\GameService.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryBase.cs" />
     <Compile Include="Assets\_Scripts\Movement\Aim.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\PoolFactory.cs" />
@@ -84,6 +88,7 @@
     <Compile Include="Assets\_Scripts\Control\Equipment.cs" />
     <Compile Include="Assets\_Scripts\Pause\PauseController.cs" />
     <Compile Include="Assets\_Scripts\Triggers\PickupTrigger.cs" />
+    <Compile Include="Assets\_Scripts\Services\LevelsDatabase.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
     <Compile Include="Assets\_Scripts\UI\UIController.cs" />
     <Compile Include="Assets\_Scripts\Control\AimController.cs" />
@@ -92,11 +97,14 @@
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
     <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
     <Compile Include="Assets\_Scripts\SO\Images\DialogueImages.cs" />
+    <Compile Include="Assets\_Scripts\UI\StatesView\LevelView.cs" />
     <Compile Include="Assets\_Scripts\AI\Chaser.cs" />
     <Compile Include="Assets\_Scripts\Shared\MonoSingleton.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
+    <Compile Include="Assets\_Scripts\Services\Interface\IGameService.cs" />
     <Compile Include="Assets\_Scripts\Utility\XML\UnityXmlHelper.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\AnswerButtonFactory.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\_Scripts\Communication\AnswerButton.cs" />
     <Compile Include="Assets\_Scripts\Communication\Message.cs" />
     <Compile Include="Assets\_Scripts\AI\AIDependet.cs" />
@@ -105,13 +113,21 @@
     <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
     <Compile Include="Assets\_Scripts\Events\GlobalEvent.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Damagable.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelState.cs" />
+    <Compile Include="Assets\_Scripts\Services\Interface\ILevelsService.cs" />
+    <Compile Include="Assets\_Scripts\Services\ServiceInstaller.cs" />
     <Compile Include="Assets\_Scripts\SO\ItemInfo\ItemInfoBase.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\States\MainMenuState.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\States\LoadMainMenuState.cs" />
     <Compile Include="Assets\_Scripts\UI\UIMenu.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryModel.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
     <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />
+    <Compile Include="Assets\_Scripts\UI\StatesView\MainMenuView.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelBase.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\MessageFactory.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\Interfaces\IState.cs" />
     <Compile Include="Assets\_Scripts\Units\Direction.cs" />
     <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryItemModel.cs" />
     <Compile Include="Assets\_Scripts\Inventory\Slot.cs" />
@@ -130,22 +146,6 @@
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\StateMachine.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\Interfaces\IState.cs" />
-    <Compile Include="Assets\_Scripts\UI\StatesView\MainMenuView.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\MainMenuState.cs" />
-    <Compile Include="Assets\_Scripts\Services\Interface\IGameService.cs" />
-    <Compile Include="Assets\_Scripts\Services\GameService.cs" />
-    <Compile Include="Assets\_Scripts\Services\ServiceInstaller.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\LevelState.cs" />
-    <Compile Include="Assets\_Scripts\UI\StatesView\LevelView.cs" />
-    <Compile Include="Assets\_Scripts\SO\Levels\LevelDefinition.cs" />
-    <Compile Include="Assets\_Scripts\Services\LevelsDatabase.cs" />
-    <Compile Include="Assets\_Scripts\Services\Interface\ILevelsService.cs" />
-    <Compile Include="Assets\_Scripts\UI\StatesView\LoadingView.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelState.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelBase.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\LoadMainMenuState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -846,6 +846,9 @@
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
@@ -912,6 +915,9 @@
     <Reference Include="Unity.Entities.BuildUtils">
       <HintPath>Library\ScriptAssemblies\Unity.Entities.BuildUtils.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
@@ -930,14 +936,14 @@
     <Reference Include="Unity.Burst.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>Library\ScriptAssemblies\Unity.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Hybrid">
       <HintPath>Library\ScriptAssemblies\Unity.Entities.Hybrid.dll</HintPath>
@@ -947,6 +953,9 @@
     </Reference>
     <Reference Include="Unity.Physics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Physics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
@@ -960,11 +969,14 @@
     <Reference Include="Unity.Burst">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Jobs">
-      <HintPath>Library\ScriptAssemblies\Unity.Jobs.dll</HintPath>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Jobs">
+      <HintPath>Library\ScriptAssemblies\Unity.Jobs.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Deformations">
       <HintPath>Library\ScriptAssemblies\Unity.Deformations.dll</HintPath>
@@ -990,23 +1002,11 @@
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ProBuilder">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UniRx.csproj">
-      <Project>{4ECFC274-CAE2-2BDC-E967-C15D74FCC20F}</Project>
-      <Name>UniRx</Name>
+    <ProjectReference Include="UniTask.TextMeshPro.csproj">
+      <Project>{440E6BD1-B52F-D516-5B54-3EB5FC27705A}</Project>
+      <Name>UniTask.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="UniTask.Addressables.csproj">
       <Project>{CE812993-1846-DCE9-88A0-C01E79DEE83A}</Project>
@@ -1016,17 +1016,17 @@
       <Project>{5681A450-1EF8-817F-1072-A721F2A17811}</Project>
       <Name>UniTask.DOTween</Name>
     </ProjectReference>
-    <ProjectReference Include="UniTask.csproj">
-      <Project>{87275BA5-198B-C4F0-98D9-3C623D18F184}</Project>
-      <Name>UniTask</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.TextMeshPro.csproj">
-      <Project>{440E6BD1-B52F-D516-5B54-3EB5FC27705A}</Project>
-      <Name>UniTask.TextMeshPro</Name>
-    </ProjectReference>
     <ProjectReference Include="UniTask.Linq.csproj">
       <Project>{002A5BC2-4559-2AD7-E6FC-D191BC57FE50}</Project>
       <Name>UniTask.Linq</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{4ECFC274-CAE2-2BDC-E967-C15D74FCC20F}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{87275BA5-198B-C4F0-98D9-3C623D18F184}</Project>
+      <Name>UniTask</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

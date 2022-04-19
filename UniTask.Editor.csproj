@@ -57,8 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniTask\UniTask-master\src\UniTask\Assets\Plugins\UniTask\Editor\SplitterGUILayout.cs" />
-    <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniTask\UniTask-master\src\UniTask\Assets\Plugins\UniTask\Editor\UniTaskTrackerTreeView.cs" />
     <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniTask\UniTask-master\src\UniTask\Assets\Plugins\UniTask\Editor\UniTaskTrackerWindow.cs" />
+    <Compile Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniTask\UniTask-master\src\UniTask\Assets\Plugins\UniTask\Editor\UniTaskTrackerTreeView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\Пользователь\Desktop\ForUnity\Plugins\UniTask\UniTask-master\src\UniTask\Assets\Plugins\UniTask\Editor\UniTask.Editor.asmdef" />
