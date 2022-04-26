@@ -52,7 +52,7 @@ namespace Break.Procedural.Animation.SpiderMovement
             var currentDistanceFromGround = (transform.position - hit.point).magnitude;
             if (currentDistanceFromGround < distanceFromGround)
             {
-                rigidbody.AddForce(Vectors.Up * upForce, ForceMode.Impulse);
+                rigidbody.AddForce(Vectors.Up * upForce, ForceMode.Force);
             }
         }
 
