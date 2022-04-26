@@ -1,8 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using Unity.Assertions;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public delegate T StateFactory<out T>();
 

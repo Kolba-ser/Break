@@ -1,6 +1,5 @@
 ﻿
 using Cysharp.Threading.Tasks;
-using Unity.Assertions;
 
 public class LoadMainMenuState : LoadLevelBase, IState
 {

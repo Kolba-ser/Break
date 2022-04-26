@@ -1,6 +1,5 @@
-﻿
-using Unity.Assertions;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public sealed class LevelState : IState
 {

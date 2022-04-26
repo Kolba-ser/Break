@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-using Unity.Assertions;
+using UnityEngine.Assertions;
 
 public sealed class LoadLevelState : LoadLevelBase, IState
 {
