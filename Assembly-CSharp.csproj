@@ -78,6 +78,7 @@
     <Compile Include="Assets\_Scripts\Services\GameService.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryBase.cs" />
     <Compile Include="Assets\_Scripts\Movement\Aim.cs" />
+    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBox.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\PoolFactory.cs" />
     <Compile Include="Assets\_Scripts\AI\AIWeaponConroller.cs" />
     <Compile Include="Assets\_Scripts\Communication\Dialogue.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\_Scripts\AI\Chaser.cs" />
     <Compile Include="Assets\_Scripts\Shared\MonoSingleton.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
+    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WateverVolumeFloater.cs" />
     <Compile Include="Assets\_Scripts\Services\Interface\IGameService.cs" />
     <Compile Include="Assets\_Scripts\Utility\XML\UnityXmlHelper.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\AnswerButtonFactory.cs" />
@@ -108,10 +110,12 @@
     <Compile Include="Assets\_Scripts\Communication\AnswerButton.cs" />
     <Compile Include="Assets\_Scripts\Communication\Message.cs" />
     <Compile Include="Assets\_Scripts\AI\AIDependet.cs" />
+    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeTransforms.cs" />
     <Compile Include="Assets\_Scripts\Triggers\AITrigger.cs" />
     <Compile Include="Assets\_Scripts\Control\PlayerWeaponController.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
     <Compile Include="Assets\_Scripts\Events\GlobalEvent.cs" />
+    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBase.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Damagable.cs" />
     <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelState.cs" />
     <Compile Include="Assets\_Scripts\Services\Interface\ILevelsService.cs" />
@@ -140,18 +144,17 @@
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegTarget.cs" />
     <Compile Include="Assets\_Scripts\Inventory\IEquipable.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Characteristic.cs" />
+    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\Core\FlagEnumAttribute.cs" />
+    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeHelper.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\Harpoon.cs" />
     <Compile Include="Assets\_Scripts\SO\ItemInfo\WeaponInfo.cs" />
     <Compile Include="Assets\_Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeTransforms.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WateverVolumeFloater.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBox.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\Core\FlagEnumAttribute.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBase.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeHelper.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\States\RestartState.cs" />
+    <Compile Include="Assets\_Scripts\UI\StatesView\RestartView.cs" />
+    <Compile Include="Assets\_Scripts\Utility\DontDestroyOnLoad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

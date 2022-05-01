@@ -12,12 +12,16 @@ public sealed class GameService : StateMachine<GameTrigger>, IGameService
         DefineState(() => new LoadLevelState(this));
         DefineState(() => new LevelState(this));
         DefineState(() => new LoadMainMenuState(this));
+        DefineState(() => new RestartState(this));
 
         DefineStartTransition<MainMenuState>(GameTrigger.MainMenu);
         DefineTransition<MainMenuState, LoadLevelState>(GameTrigger.Play);
         DefineTransition<LoadLevelState, LevelState>(GameTrigger.Play);
         DefineTransition<LevelState, LoadMainMenuState>(GameTrigger.MainMenu);
         DefineTransition<LoadMainMenuState, MainMenuState>(GameTrigger.MainMenu);
+
+        DefineTransition<LevelState, RestartState>(GameTrigger.Restart);
+        DefineTransition<RestartState, LoadLevelState>(GameTrigger.Restart);
 
         Validate();
 
@@ -41,6 +45,7 @@ public sealed class GameService : StateMachine<GameTrigger>, IGameService
 public enum GameTrigger
 {
     Play, 
-    MainMenu
+    MainMenu,
+    Restart
 }
 

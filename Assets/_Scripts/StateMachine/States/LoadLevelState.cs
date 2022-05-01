@@ -24,6 +24,7 @@ public sealed class LoadLevelState : LoadLevelBase, IState
     {
         await LoadScene(levelDefinition.Scene);
         gameService.Fire(GameTrigger.Play);
+        Debug.Log("Level loaded");
     }
 
     public void OnExit()
