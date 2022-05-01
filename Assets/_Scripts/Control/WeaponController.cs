@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 
 
-public abstract class WeaponController : MonoBehaviour
+public abstract class WeaponController : MonoBehaviour, IPauseHandler
 {
     [SerializeField] protected Weapon activeWeapon;
     [SerializeField] protected Aim aim;
@@ -40,7 +40,9 @@ public abstract class WeaponController : MonoBehaviour
         activeWeapon.SetAim(aim);
         activeWeapon.Activate();
         aim.Weapon = weapon;
+        PauseController.Instance.Register(this);
         aim.LookAtMouse();
+
     }
     public void ResetWeapon()
     {
@@ -48,8 +50,19 @@ public abstract class WeaponController : MonoBehaviour
         {
             activeWeapon.RemoveAim();
             aim.Weapon = null;
+            PauseController.Instance.Unregister(this);
             activeWeapon = null;
         }
+    }
+
+    public void OnPaused()
+    {
+        aim.Dispose();
+    }
+
+    public void OnUnpaused()
+    {
+        aim.LookAtMouse();
     }
 
 }

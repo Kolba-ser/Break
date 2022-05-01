@@ -80,6 +80,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LevelMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d96419b-9fa6-45ed-8c71-821fdc8f56ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +223,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55c60500-feaf-46a0-9978-5b981289bb41"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LevelMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -245,6 +265,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Player_MoveKeyboard = m_Player.FindAction("MoveKeyboard", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
+        m_Player_LevelMenu = m_Player.FindAction("LevelMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -310,6 +331,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MoveKeyboard;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Inventory;
+    private readonly InputAction m_Player_LevelMenu;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -320,6 +342,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @MoveKeyboard => m_Wrapper.m_Player_MoveKeyboard;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
+        public InputAction @LevelMenu => m_Wrapper.m_Player_LevelMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -347,6 +370,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Inventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @LevelMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLevelMenu;
+                @LevelMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLevelMenu;
+                @LevelMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLevelMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -369,6 +395,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
+                @LevelMenu.started += instance.OnLevelMenu;
+                @LevelMenu.performed += instance.OnLevelMenu;
+                @LevelMenu.canceled += instance.OnLevelMenu;
             }
         }
     }
@@ -390,5 +419,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnMoveKeyboard(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnLevelMenu(InputAction.CallbackContext context);
     }
 }

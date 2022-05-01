@@ -7,9 +7,12 @@ public sealed class EventHolder : Singletone<EventHolder>, IDisposable
     private GlobalEvent onMenuOpenedEvent = new GlobalEvent();
     private GlobalEvent onMenuClosedEvent = new GlobalEvent();
     private GlobalEvent<bool> onEndGame = new GlobalEvent<bool>();
+    private GlobalEvent onLevelChanged = new GlobalEvent();
+
 
     public GlobalEvent OnMenuOpenedEvent => onMenuOpenedEvent;
     public GlobalEvent OnMenuClosedEvent => onMenuClosedEvent;
+    public GlobalEvent OnLevelChanged => onLevelChanged;
     public GlobalEvent<bool> OnEndGame => onEndGame;
 
     public void Dispose()

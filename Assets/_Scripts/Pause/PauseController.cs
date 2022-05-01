@@ -15,6 +15,17 @@ public sealed class PauseController : Singletone<PauseController>, IDisposable
 
     public bool IsPaused => isPaused;
 
+    public PauseController()
+    {
+        EventHolder.Instance.OnLevelChanged.Subscribe(() =>
+        {
+            if (isPaused)
+            {
+                Unpause();
+            }
+        });
+    }
+
     public void Register(IPauseHandler handler)
     {
         handlers.Add(handler);

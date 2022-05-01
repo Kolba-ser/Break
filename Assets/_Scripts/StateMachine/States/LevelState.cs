@@ -27,6 +27,7 @@ public sealed class LevelState : IState
     {
         menuView.Play -= OnMainMenu;
         restartView.Restart -= OnRestart;
+        EventHolder.Instance.OnLevelChanged.Invoke();
 
     }
 

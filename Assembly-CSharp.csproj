@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{C87308A2-537D-5CF4-D57F-0B15DA7F7CBA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -155,6 +156,7 @@
     <Compile Include="Assets\_Scripts\StateMachine\States\RestartState.cs" />
     <Compile Include="Assets\_Scripts\UI\StatesView\RestartView.cs" />
     <Compile Include="Assets\_Scripts\Utility\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\_Scripts\UI\Menus\LevelMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -971,6 +973,9 @@
       <Project>{7503AD4C-4F22-0BC9-67DD-D55FFFE4B497}</Project>
       <Name>UniTask</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\_Scripts\Input\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -93,11 +93,15 @@ public class PlayerMovement : MonoBehaviour
 
             if(InputController.Instance.MoveKeyboardInput.x != 0)
             {
-                rigidbody.MovePosition(rigidbody.position + transform.right * InputController.Instance.MoveKeyboardInput.x * Time.fixedDeltaTime);
+                rigidbody.MovePosition(rigidbody.position + transform.right
+                                    * InputController.Instance.MoveKeyboardInput.x
+                                    * moveSpeed * Time.fixedDeltaTime);
             }
             if (InputController.Instance.MoveKeyboardInput.z != 0)
             {
-                rigidbody.MovePosition(rigidbody.position + transform.forward * InputController.Instance.MoveKeyboardInput.z * Time.fixedDeltaTime);
+                rigidbody.MovePosition(rigidbody.position + transform.forward
+                                    * InputController.Instance.MoveKeyboardInput.z 
+                                    * moveSpeed * Time.fixedDeltaTime);
             }
 
             rigidbody.rotation =

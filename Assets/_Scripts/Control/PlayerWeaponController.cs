@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public sealed class PlayerWeaponController : WeaponController, IPauseHandler
+public sealed class PlayerWeaponController : WeaponController
 {
 
     private bool isPaused => PauseController.Instance.IsPaused;
@@ -10,7 +10,6 @@ public sealed class PlayerWeaponController : WeaponController, IPauseHandler
     private void Start()
     {
         InputController.Instance.OnFire(OnFireStart, OnFireStop);
-        PauseController.Instance.Register(this);
     }
 
     private void OnFireStart()
@@ -27,16 +26,6 @@ public sealed class PlayerWeaponController : WeaponController, IPauseHandler
             return;
 
         activeWeapon.StopShoot(OnShot);
-    }
-
-    public void OnPaused()
-    {
-        aim.Dispose();
-    }
-
-    public void OnUnpaused()
-    {
-        aim.LookAtMouse();
     }
 }
 

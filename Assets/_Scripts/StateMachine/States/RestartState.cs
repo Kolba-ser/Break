@@ -13,6 +13,7 @@ public sealed class RestartState : IState
 
     public void OnEnter()
     {
+        EventHolder.Instance.OnLevelChanged.Invoke();
         gameService.Fire(GameTrigger.Restart);
     }
 

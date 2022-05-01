@@ -7,6 +7,7 @@ public class LoadLevelBase
 {
     protected async UniTask LoadScene(string sceneName)
     {
+        EventHolder.Instance.OnLevelChanged.Invoke();
         var loadingView = Object.Instantiate(
             (LoadingView)await Resources.LoadAsync<LoadingView>("LoadingView"));
 

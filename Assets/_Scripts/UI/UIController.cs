@@ -15,9 +15,9 @@ public sealed class UIController : MonoSingleton<UIController>
     {
         menus.Add(menu);
     }
-   
+
     /// <summary>
-    /// Возвращает меню если оно было зарегистрировано
+    /// Возвращает зарегистрированое меню. 
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="menu"></param>

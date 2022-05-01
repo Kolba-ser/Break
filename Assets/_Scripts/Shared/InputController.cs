@@ -27,6 +27,11 @@ public class InputController : MonoSingleton<InputController>
         inputControlls.Player.MoveKeyboard.canceled += _ => moveKeyboardInput = _.ReadValue<Vector3>();
     }
 
+    private void Start()
+    {
+        EventHolder.Instance.OnLevelChanged.Subscribe(inputControlls.Dispose);
+    }
+
     /// <summary>
     /// Подписывает два callback'a на два разных действия
     /// </summary>
@@ -88,13 +93,22 @@ public class InputController : MonoSingleton<InputController>
         inputControlls.Player.Inventory.canceled += _ => callbackOnCanceled();
     }
 
+    /// <summary>
+    /// Вызывается при нажатие на кнопку открытия меню
+    /// </summary>
+    public void OnLevelMenu(Action callbackOnPerformed, Action callbackOnCanceled)
+    {
+        inputControlls.Player.LevelMenu.performed += _ => callbackOnPerformed();
+        inputControlls.Player.LevelMenu.canceled += _ => callbackOnCanceled();
+    }
+
     private void OnEnable()
     {
         inputControlls.Enable();
     }
     private void OnDisable()
     {
-        inputControlls.Disable();
+        inputControlls.Dispose();
     }
 
     public void Update()

@@ -43,6 +43,8 @@ public sealed class Aim : MonoBehaviour, IDisposable
     {
         if (rotateOnStart)
             LookAtMouse();
+
+        EventHolder.Instance.OnLevelChanged.Subscribe(Dispose);
     }
 
     public void LookAtMouse()
