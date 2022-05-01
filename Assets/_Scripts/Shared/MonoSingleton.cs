@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
+
+    [SerializeField] private bool dontDestroyOnLoad;
+    
     private  static T instance;
 
     public static T Instance
@@ -28,14 +31,23 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
         if (!instance)
         {
             instance = GetComponent<T>();
+            LateAwake();
+            if (dontDestroyOnLoad)
+                DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.LogError($"Duplicated Singletone {typeof(T)}");
+            if (dontDestroyOnLoad)
+                Destroy(this);
+            else
+                Debug.LogError($"Duplicated Singletone {typeof(T)}");
         }
-
-        LateAwake();
     }
+
+    /// <summary>
+    /// Вызывается при первой инициализации.<br/>
+    /// Если объект помечен как DontDestroyOnLoad, LateAWake не вызовется второй раз
+    /// </summary>
 
     protected virtual void LateAwake(){}
 
