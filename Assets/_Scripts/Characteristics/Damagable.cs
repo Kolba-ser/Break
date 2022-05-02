@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class Damagable : Characteristic
 {
-    [SerializeField] private float health;
+    [SerializeField] protected float health;
 
-    private float currentHealth;
+    protected float currentHealth;
     private IKillable[] killables;
 
     public float CurrentHealth => currentHealth;
     public float InitialHelth => health;
     public bool IsDead => currentHealth <= 0;
 
-
-    private void Awake()
+    protected virtual void Awake()
     {
         killables = GetComponentsInChildren<IKillable>();
-    }
-
-    private void OnEnable()
-    {
-        currentHealth = health;
     }
 
     public void GetDamage(float damage)

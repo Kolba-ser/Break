@@ -25,7 +25,8 @@ public sealed class EventHolder : Singletone<EventHolder>, IDisposeHandler
         onMenuOpenedEvent.Dispose();
         onMenuClosedEvent.Dispose();
         onEndGame.Dispose();
-        OnLevelChanged.Dispose();
+        onEnemyDie.Dispose();
+        onLevelChanged.Dispose();
         base.Dispose();
     }
 

@@ -83,5 +83,10 @@ public static class Extensions
 
         return (intervalMagnitude / onePercent) / 100;
     }
+
+    public static T GetRandom<T>(this T[] arr)
+    {
+        return arr[UnityEngine.Random.Range(0, arr.Length)];
+    }
 }
 

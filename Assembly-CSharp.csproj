@@ -67,10 +67,14 @@
     <Compile Include="Assets\_Scripts\UI\Inventory\InventorySlotPresenter.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Projectile.cs" />
     <Compile Include="Assets\Settings\Input\Input.cs" />
+    <Compile Include="Assets\_Scripts\Triggers\DeathTrigger.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Railgun\Railgun.cs" />
+    <Compile Include="Assets\_Scripts\Bad\HealthPresenter.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\Spider.cs" />
     <Compile Include="Assets\_Scripts\Communication\ChatPresenter.cs" />
     <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryModel.cs" />
+    <Compile Include="Assets\_Scripts\Bad\EnemySpawner.cs" />
+    <Compile Include="Assets\_Scripts\Bad\Disposer.cs" />
     <Compile Include="Assets\_Scripts\Shared\Singletone.cs" />
     <Compile Include="Assets\_Scripts\Utility\XML\SerializerXML.cs" />
     <Compile Include="Assets\_Scripts\StateMachine\States\LevelState.cs" />
@@ -121,6 +125,7 @@
     <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBase.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Damagable.cs" />
     <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelState.cs" />
+    <Compile Include="Assets\_Scripts\Bad\IDisposeHandler.cs" />
     <Compile Include="Assets\_Scripts\Services\Interface\ILevelsService.cs" />
     <Compile Include="Assets\_Scripts\Services\ServiceInstaller.cs" />
     <Compile Include="Assets\_Scripts\SO\ItemInfo\ItemInfoBase.cs" />
@@ -128,8 +133,11 @@
     <Compile Include="Assets\_Scripts\StateMachine\States\LoadMainMenuState.cs" />
     <Compile Include="Assets\_Scripts\UI\UIMenu.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryModel.cs" />
+    <Compile Include="Assets\_Scripts\Units\Player.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
     <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
+    <Compile Include="Assets\_Scripts\Bad\Wallet.cs" />
+    <Compile Include="Assets\_Scripts\Units\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />
     <Compile Include="Assets\_Scripts\UI\StatesView\MainMenuView.cs" />
     <Compile Include="Assets\_Scripts\StateMachine\States\LoadLevelBase.cs" />
@@ -156,14 +164,7 @@
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\Units\Player.cs" />
-    <Compile Include="Assets\_Scripts\Triggers\DeathTrigger.cs" />
-    <Compile Include="Assets\_Scripts\Bad\Disposer.cs" />
-    <Compile Include="Assets\_Scripts\Bad\IDisposeHandler.cs" />
-    <Compile Include="Assets\_Scripts\Bad\EnemySpawner.cs" />
-    <Compile Include="Assets\_Scripts\Bad\Wallet.cs" />
-    <Compile Include="Assets\_Scripts\Bad\HealthPresenter.cs" />
-    <Compile Include="Assets\_Scripts\Units\Enemy.cs" />
+    <Compile Include="Assets\_Scripts\SO\Factories\Pool\EnemyFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
