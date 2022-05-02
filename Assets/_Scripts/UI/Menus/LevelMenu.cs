@@ -11,6 +11,11 @@ public sealed class LevelMenu : UIMenu
     private void Start()
     {
         InputController.Instance.OnLevelMenu(Show, Hide);
+        EventHolder.Instance.OnEndGame.Subscribe(_ =>
+        {
+            InputController.Instance.OnLevelMenu(Show, Hide, false);
+            Show();
+        });
     }
 
     public override void Show()

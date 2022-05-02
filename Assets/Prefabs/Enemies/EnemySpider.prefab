@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 1126477706319141745}
   - component: {fileID: 1237756943}
   - component: {fileID: 8477059876234034769}
+  - component: {fileID: 5131545977838171193}
   m_Layer: 10
   m_Name: EnemySpider
   m_TagString: Untagged
@@ -335,6 +336,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0.14, z: 0}
+--- !u!114 &5131545977838171193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751816619019741479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e975aa1d8750ff40a4e62393e516d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  moneyReward: 100
 --- !u!1 &2751821475615627337
 GameObject:
   m_ObjectHideFlags: 0

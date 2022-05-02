@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{C87308A2-537D-5CF4-D57F-0B15DA7F7CBA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -82,6 +81,7 @@
     <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBox.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\PoolFactory.cs" />
     <Compile Include="Assets\_Scripts\AI\AIWeaponConroller.cs" />
+    <Compile Include="Assets\_Scripts\Utility\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\_Scripts\Communication\Dialogue.cs" />
     <Compile Include="Assets\_Scripts\Triggers\WeaponPickupTrigger.cs" />
     <Compile Include="Assets\_Scripts\Pool\Interfaces\IPooledObject.cs" />
@@ -94,9 +94,10 @@
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegRaycast.cs" />
     <Compile Include="Assets\_Scripts\UI\UIController.cs" />
     <Compile Include="Assets\_Scripts\Control\AimController.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\IKillable.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\Interfaces\IKillable.cs" />
     <Compile Include="Assets\_Scripts\Shared\Extensions.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\SpringSettings.cs" />
+    <Compile Include="Assets\_Scripts\UI\Menus\LevelMenu.cs" />
     <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
     <Compile Include="Assets\_Scripts\SO\Images\DialogueImages.cs" />
     <Compile Include="Assets\_Scripts\UI\StatesView\LevelView.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeTransforms.cs" />
     <Compile Include="Assets\_Scripts\Triggers\AITrigger.cs" />
     <Compile Include="Assets\_Scripts\Control\PlayerWeaponController.cs" />
+    <Compile Include="Assets\_Scripts\StateMachine\States\RestartState.cs" />
     <Compile Include="Assets\_Scripts\Control\WeaponController.cs" />
     <Compile Include="Assets\_Scripts\Events\GlobalEvent.cs" />
     <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBase.cs" />
@@ -149,14 +151,19 @@
     <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeHelper.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\Harpoon.cs" />
     <Compile Include="Assets\_Scripts\SO\ItemInfo\WeaponInfo.cs" />
+    <Compile Include="Assets\_Scripts\UI\StatesView\RestartView.cs" />
     <Compile Include="Assets\_Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\StateMachine\States\RestartState.cs" />
-    <Compile Include="Assets\_Scripts\UI\StatesView\RestartView.cs" />
-    <Compile Include="Assets\_Scripts\Utility\DontDestroyOnLoad.cs" />
-    <Compile Include="Assets\_Scripts\UI\Menus\LevelMenu.cs" />
+    <Compile Include="Assets\_Scripts\Units\Player.cs" />
+    <Compile Include="Assets\_Scripts\Triggers\DeathTrigger.cs" />
+    <Compile Include="Assets\_Scripts\Bad\Disposer.cs" />
+    <Compile Include="Assets\_Scripts\Bad\IDisposeHandler.cs" />
+    <Compile Include="Assets\_Scripts\Bad\EnemySpawner.cs" />
+    <Compile Include="Assets\_Scripts\Bad\Wallet.cs" />
+    <Compile Include="Assets\_Scripts\Bad\HealthPresenter.cs" />
+    <Compile Include="Assets\_Scripts\Units\Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -973,9 +980,6 @@
       <Project>{7503AD4C-4F22-0BC9-67DD-D55FFFE4B497}</Project>
       <Name>UniTask</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\_Scripts\Input\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

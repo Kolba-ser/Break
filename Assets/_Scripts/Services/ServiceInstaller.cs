@@ -15,7 +15,5 @@ public sealed class ServiceInstaller : MonoSingleton<ServiceInstaller>
     {
         gameService = new GameService(LevelsService);
     }
-
-
 }
 

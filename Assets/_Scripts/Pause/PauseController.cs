@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class PauseController : Singletone<PauseController>, IDisposable
+public sealed class PauseController : Singletone<PauseController>, IDisposeHandler
 {
 
     private List<IPauseHandler> handlers = new List<IPauseHandler>();
@@ -17,13 +17,7 @@ public sealed class PauseController : Singletone<PauseController>, IDisposable
 
     public PauseController()
     {
-        EventHolder.Instance.OnLevelChanged.Subscribe(() =>
-        {
-            if (isPaused)
-            {
-                Unpause();
-            }
-        });
+        EventHolder.Instance.OnLevelChanged.Subscribe(Unpause);
     }
 
     public void Register(IPauseHandler handler)
@@ -69,9 +63,15 @@ public sealed class PauseController : Singletone<PauseController>, IDisposable
         }
     }
 
-    public void Dispose()
+    public override void Dispose()
     {
         handlers.Clear();
+        base.Dispose();
+    }
+
+    public void OnDispose()
+    {
+        Dispose();
     }
 }
 

@@ -1,7 +1,10 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
+using InpAction = Break.Input.InputAction;
 
 public class InputController : MonoSingleton<InputController>
 {
@@ -11,6 +14,9 @@ public class InputController : MonoSingleton<InputController>
     private float moveInput;
     private Vector3 moveKeyboardInput;
     private Vector2 mousePosition;
+
+    private Dictionary<InpAction, List<Action>> handlers =
+        new Dictionary<InpAction, List<Action>>();
 
     public float MoveInput => moveInput;
     public Vector3 MoveKeyboardInput => moveKeyboardInput;
@@ -56,7 +62,7 @@ public class InputController : MonoSingleton<InputController>
         }
 
         inputControlls.Player.Fire.canceled += _ => callback();
-    } 
+    }
 
     /// <summary>
     /// Подписвает callback на два действия
@@ -76,7 +82,7 @@ public class InputController : MonoSingleton<InputController>
         inputControlls.Player.Jump.performed += _ => callback();
     }
     /// <summary>
-    /// Вызывыется при нажатие на кнопку деша
+    /// Вызывыется при нажатие на кнопку рывка
     /// </summary>
     /// <param name="callback"></param>
     public void OnDash(Action callback)
@@ -87,19 +93,39 @@ public class InputController : MonoSingleton<InputController>
     /// <summary>
     /// Вызывается при нажатие на кнопку открытия инвентаря
     /// </summary>
-    public void OnInventory(Action callbackOnPerformed, Action callbackOnCanceled)
+    public void OnInventory(Action callbackOnPerformed, Action callbackOnCanceled, bool subscribe = true)
     {
-        inputControlls.Player.Inventory.performed += _ => callbackOnPerformed();
-        inputControlls.Player.Inventory.canceled += _ => callbackOnCanceled();
+        if (subscribe)
+        {
+            inputControlls.Player.Inventory.performed += _ => callbackOnPerformed();
+            inputControlls.Player.Inventory.canceled += _ => callbackOnCanceled();
+            return;
+        }
+        inputControlls.Player.Inventory.performed -= _ => callbackOnPerformed();
+        inputControlls.Player.Inventory.canceled -= _ => callbackOnCanceled();
+
     }
 
     /// <summary>
     /// Вызывается при нажатие на кнопку открытия меню
     /// </summary>
-    public void OnLevelMenu(Action callbackOnPerformed, Action callbackOnCanceled)
+    public void OnLevelMenu(Action callbackOnPerformed, Action callbackOnCanceled, bool subscribe = true)
     {
-        inputControlls.Player.LevelMenu.performed += _ => callbackOnPerformed();
-        inputControlls.Player.LevelMenu.canceled += _ => callbackOnCanceled();
+        if (subscribe)
+        {
+            inputControlls.Player.LevelMenu.performed += _ => callbackOnPerformed();
+            inputControlls.Player.LevelMenu.canceled += _ => callbackOnCanceled();
+            return;
+        }
+
+        inputControlls.Player.LevelMenu.performed -= _ => callbackOnPerformed();
+        inputControlls.Player.LevelMenu.canceled -= _ => callbackOnCanceled();
+
+    }
+
+    public void Unsubscribe()
+    {
+
     }
 
     private void OnEnable()
@@ -117,3 +143,14 @@ public class InputController : MonoSingleton<InputController>
     }
 }
 
+namespace Break.Input
+{
+    public enum InputAction
+    {
+        OnFire,
+        OnDash,
+        OnJump,
+        OnInventory,
+        OnLevelMenu
+    }
+}

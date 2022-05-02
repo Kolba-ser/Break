@@ -1387,6 +1387,7 @@ GameObject:
   - component: {fileID: 1797083265}
   - component: {fileID: 1797083274}
   - component: {fileID: 2112587682}
+  - component: {fileID: 29283684433372410}
   m_Layer: 6
   m_Name: SpiderOrange
   m_TagString: Untagged
@@ -1622,6 +1623,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponController: {fileID: 7702708860770398464}
   inventory: {fileID: 4160509254926972462}
+--- !u!114 &29283684433372410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537008473948126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5e8fa687eea1f43820cb81c709b940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &1545403800867726
 GameObject:
   m_ObjectHideFlags: 0

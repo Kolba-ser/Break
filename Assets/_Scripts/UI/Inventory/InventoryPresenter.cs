@@ -34,6 +34,10 @@ public sealed class InventoryPresenter : UIMenu
         }
 
         InputController.Instance.OnInventory(Show, Hide);
+        EventHolder.Instance.OnEndGame.Subscribe(_ =>
+        {
+            InputController.Instance.OnInventory(Show, Hide, false);
+        });
     }
 
     private void OnEnable()

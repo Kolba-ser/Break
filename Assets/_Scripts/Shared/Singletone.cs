@@ -1,4 +1,6 @@
-﻿public class Singletone<T> where T : new()
+﻿using System;
+
+public class Singletone<T> : IDisposable where T : new()
 {
     private static T instance;
 
@@ -13,5 +15,10 @@
 
             return instance;
         }
+    }
+
+    public virtual void Dispose()
+    {
+        instance = default;
     }
 }
