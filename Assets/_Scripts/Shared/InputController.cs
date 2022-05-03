@@ -123,9 +123,23 @@ public class InputController : MonoSingleton<InputController>
 
     }
 
-    public void Unsubscribe()
+    /// <summary>
+    /// Вызываеться при нажатие на кнопку взаимодействия
+    /// </summary>
+    /// <param name="callbackOnPerformed"></param>
+    /// <param name="callbackOnCanceled"></param>
+    /// <param name="subscribe"></param>
+    public void OnInteract(Action callbackOnPerformed, Action callbackOnCanceled, bool subscribe = true)
     {
+        if (subscribe)
+        {
+            inputControlls.Player.Interact.performed += _ => callbackOnPerformed();
+            inputControlls.Player.Interact.canceled += _ => callbackOnCanceled();
+            return;
+        }
 
+        inputControlls.Player.Interact.performed -= _ => callbackOnPerformed();
+        inputControlls.Player.Interact.canceled -= _ => callbackOnCanceled();
     }
 
     private void OnEnable()

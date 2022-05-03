@@ -27,5 +27,11 @@ public sealed class PlayerWeaponController : WeaponController
 
         activeWeapon.StopShoot(OnShot);
     }
+
+    public override void OnPaused()
+    {
+        base.OnPaused();
+        activeWeapon.StopShoot();
+    }
 }
 

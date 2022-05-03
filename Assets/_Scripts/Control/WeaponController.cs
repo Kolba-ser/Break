@@ -55,12 +55,12 @@ public abstract class WeaponController : MonoBehaviour, IPauseHandler
         }
     }
 
-    public void OnPaused()
+    public virtual void OnPaused()
     {
         aim.Dispose();
     }
 
-    public void OnUnpaused()
+    public virtual void OnUnpaused()
     {
         aim.LookAtMouse();
     }
