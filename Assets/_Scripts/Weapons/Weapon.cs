@@ -8,12 +8,18 @@ namespace Break.Weapons
 {
     public abstract class Weapon : MonoBehaviour, IEquipable, IInventoryItemModel<Weapon>
     {
+        [Header("OnPutAway")]
+        [SerializeField] protected Rigidbody rigidbody;
+        [SerializeField] protected float throwForce;
+        [Space(20)]
+
         [SerializeField] private WeaponInfo info;
         [SerializeField] protected Transform shotPoint;
         [Space(20)]
         [SerializeField] protected float recoilForce;
         [SerializeField] protected float damage;
         [SerializeField] protected float rotationSpeed = 5f;
+
 
         protected Aim aim;
 
@@ -33,7 +39,7 @@ namespace Break.Weapons
 
         public Weapon Component => this;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             if (IsPlaced)
                 Put(transform.parent);

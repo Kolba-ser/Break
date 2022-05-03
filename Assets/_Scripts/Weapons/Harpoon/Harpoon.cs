@@ -8,21 +8,21 @@ using UnityEngine;
 public sealed class Harpoon : Weapon
 {
     [SerializeField] private LineRenderer rope;
-    [SerializeField] private float throwForce;
 
     [Space(20)]
     [SerializeField] private HarpoonSettings settings;
 
     private CinemachineImpulseSource impulseSource;
     private Graspable target;
-    private Rigidbody rigidbody;
 
     private RaycastHit hit;
     
     private IDisposable grappling;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         impulseSource = GetComponent<CinemachineImpulseSource>();
         rigidbody = GetComponent<Rigidbody>();
     }

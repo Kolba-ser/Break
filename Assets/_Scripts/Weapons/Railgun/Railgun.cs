@@ -12,10 +12,6 @@ public sealed class Railgun : Weapon
     [SerializeField] private float minForce;
     [SerializeField] private float maxForce;
     [SerializeField] private float accambulationRate;
-    
-    [Header("OnPutAway")]
-    [SerializeField] private Rigidbody rigidbody;
-    [SerializeField] private float throwForce;
 
     private CinemachineImpulseSource impulseSource;
 
@@ -26,8 +22,9 @@ public sealed class Railgun : Weapon
 
     private const float MULTIPLIER = 0.01f;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
