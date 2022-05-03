@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7efacfb52cb3824aaa06828360a5591, type: 3}
   m_Name: G12 1
   m_EditorClassIdentifier: 
-  info: {fileID: 0}
-  cost: 0
-  gameObject: {fileID: 0}
+  info: {fileID: 11400000, guid: 0cb53c2e4f6d3ff40ba01bb19ae56e3c, type: 2}
+  cost: 100
+  gameObject: {fileID: 8100030663153160839, guid: cc35e6782942cbc41af476bf5255d91f, type: 3}
