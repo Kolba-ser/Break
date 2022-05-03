@@ -7,11 +7,11 @@ using UnityEngine;
 public sealed class Aim : MonoBehaviour, IDisposable
 {
     [SerializeField] private bool rotateOnStart;
-    [SerializeField] private LayerMask targetLayers;
 
     private Camera mainCamera;
-
     private Weapon activeWeapon;
+
+    private readonly float rayDistance = 300f;
 
     private bool isPaused => PauseController.Instance.IsPaused;
 
@@ -57,7 +57,7 @@ public sealed class Aim : MonoBehaviour, IDisposable
         .Subscribe(_ =>
         {
             var ray = mainCamera.ScreenPointToRay(InputController.Instance.MousePosition);
-            if (Physics.Raycast(ray, out var hit, targetLayers))
+            if (Physics.Raycast(ray, out var hit, rayDistance))
             {
                 activeWeapon.Direct(hit.point);
             }
