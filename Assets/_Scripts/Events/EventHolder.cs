@@ -9,7 +9,7 @@ public sealed class EventHolder : Singletone<EventHolder>, IDisposeHandler
     private GlobalEvent onMenuClosedEvent = new GlobalEvent();
     private GlobalEvent onLevelChanged = new GlobalEvent();
     private GlobalEvent<bool> onEndGame = new GlobalEvent<bool>();
-    // Костыль
+    
     private GlobalEvent<int> onEnemyDie = new GlobalEvent<int>();
 
 

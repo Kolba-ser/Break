@@ -67,7 +67,7 @@ public sealed class GlobalEvent<T> : IDisposable
         subscribers.Insert(index, (callback, priority));
         amount++;
     }
-    public void Unsubscribe(Action callback)
+    public void Unsubscribe(Action<T> callback)
     {
         if (subscribers.RemoveAll(pair => ReferenceEquals(pair.Item1, callback)).AsBool())
             amount--;
