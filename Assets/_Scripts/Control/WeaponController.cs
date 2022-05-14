@@ -1,12 +1,16 @@
-﻿using Break.Weapons;
+﻿using Break.Pause;
+using Break.Weapons;
 using System;
 using UnityEngine;
-
+using Zenject;
 
 public abstract class WeaponController : MonoBehaviour, IPauseHandler
 {
     [SerializeField] protected Weapon activeWeapon;
     [SerializeField] protected Aim aim;
+
+    [Inject] protected InputService inputService;
+    [Inject] private IPauseService pauseService;
 
     protected Action<float> OnShot;
 
@@ -40,7 +44,7 @@ public abstract class WeaponController : MonoBehaviour, IPauseHandler
         activeWeapon.SetAim(aim);
         activeWeapon.Activate();
         aim.Weapon = weapon;
-        PauseController.Instance.Register(this);
+        pauseService.Register(this);
         aim.LookAtMouse();
 
     }
@@ -50,7 +54,7 @@ public abstract class WeaponController : MonoBehaviour, IPauseHandler
         {
             activeWeapon.RemoveAim();
             aim.Weapon = null;
-            PauseController.Instance.Unregister(this);
+            pauseService.Unregister(this);
             activeWeapon = null;
         }
     }

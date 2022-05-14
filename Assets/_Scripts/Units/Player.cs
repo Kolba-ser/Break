@@ -1,8 +1,10 @@
 ﻿
 using UnityEngine;
+using Zenject;
 
 public sealed class Player : Damagable
 {
+    [Inject] private EventHolder eventHolder;
 
     protected override void Awake()
     {
@@ -12,7 +14,7 @@ public sealed class Player : Damagable
 
     protected override void OnDeath()
     {
-        EventHolder.Instance.OnEndGame.Invoke(false);
+        eventHolder.OnEndGame.Invoke(false);
         base.OnDeath();
     }
 }

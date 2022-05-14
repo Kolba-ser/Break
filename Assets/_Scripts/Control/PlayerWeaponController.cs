@@ -1,15 +1,19 @@
-﻿using Break.Weapons;
+﻿using Break.Pause;
+using Break.Weapons;
 using System;
 using UnityEngine;
+using Zenject;
 
 public sealed class PlayerWeaponController : WeaponController
 {
 
-    private bool isPaused => PauseController.Instance.IsPaused;
+    [Inject] private IPauseService pauseService;
+
+    private bool isPaused => pauseService.IsPaused;
 
     private void Start()
     {
-        InputController.Instance.OnFire(OnFireStart, OnFireStop);
+        inputService.OnFire(OnFireStart, OnFireStop);
     }
 
     private void OnFireStart()

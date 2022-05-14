@@ -7,7 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyFactory")]
 public sealed class EnemyFactory : PoolFactory
 {
-
     [SerializeField] private Enemy enemy;
 
     public override Type ProductType => typeof(Enemy);
@@ -18,7 +17,7 @@ public sealed class EnemyFactory : PoolFactory
 
         if (verified || Verify(enemy.transform))
         {
-            pooledObject = Instantiate(enemy, parent);
+            pooledObject = DiRef.Container.InstantiatePrefab(enemy, parent).GetComponent<IPooledObject>();
             return true;
         }
 

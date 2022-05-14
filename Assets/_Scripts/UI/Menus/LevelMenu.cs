@@ -1,19 +1,22 @@
 ﻿using System;
 using UnityEngine;
+using Zenject;
 
 public sealed class LevelMenu : UIMenu
 {
 
     [SerializeField] private Canvas levelMenu;
 
+    [Inject] private EventHolder eventHolder;
+
     public override Type Type => typeof(LevelMenu);
 
-    private void Start()
+    protected override void Start()
     {
-        InputController.Instance.OnLevelMenu(Show, Hide);
-        EventHolder.Instance.OnEndGame.Subscribe(_ =>
+        inputService.OnLevelMenu(Show, Hide);
+        eventHolder.OnEndGame.Subscribe(_ =>
         {
-            InputController.Instance.OnLevelMenu(Show, Hide, false);
+            inputService.OnLevelMenu(Show, Hide, false);
             Show();
         });
     }

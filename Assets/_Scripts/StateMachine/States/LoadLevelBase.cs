@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class LoadLevelBase
 {
+
+    [Inject] private EventHolder eventHolder;
+
     protected async UniTask LoadScene(string sceneName)
     {
-        EventHolder.Instance.OnLevelChanged.Invoke();
+        eventHolder.OnLevelChanged.Invoke();
         var loadingView = Object.Instantiate(
             (LoadingView)await Resources.LoadAsync<LoadingView>("LoadingView"));
 

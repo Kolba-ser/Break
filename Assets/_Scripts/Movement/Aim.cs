@@ -1,19 +1,24 @@
-﻿using Break.Weapons;
+﻿using Break.Pause;
+using Break.Weapons;
 using System;
 using UniRx;
 using UnityEngine;
-
+using Zenject;
 
 public sealed class Aim : MonoBehaviour, IDisposable
 {
     [SerializeField] private bool rotateOnStart;
+
+    [Inject] private InputService inputService;
+    [Inject] private EventHolder eventHolder;
+    [Inject] private IPauseService pauseService;
 
     private Camera mainCamera;
     private Weapon activeWeapon;
 
     private readonly float rayDistance = 300f;
 
-    private bool isPaused => PauseController.Instance.IsPaused;
+    private bool isPaused => pauseService.IsPaused;
 
     public Weapon Weapon
     {
@@ -44,7 +49,7 @@ public sealed class Aim : MonoBehaviour, IDisposable
         if (rotateOnStart)
             LookAtMouse();
 
-        EventHolder.Instance.OnLevelChanged.Subscribe(Dispose);
+        eventHolder.OnLevelChanged.Subscribe(Dispose);
     }
 
     public void LookAtMouse()
@@ -56,7 +61,7 @@ public sealed class Aim : MonoBehaviour, IDisposable
         .TakeUntilDisable(activeWeapon)
         .Subscribe(_ =>
         {
-            var ray = mainCamera.ScreenPointToRay(InputController.Instance.MousePosition);
+            var ray = mainCamera.ScreenPointToRay(inputService.MousePosition);
             if (Physics.Raycast(ray, out var hit, rayDistance))
             {
                 activeWeapon.Direct(hit.point);

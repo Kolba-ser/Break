@@ -1,7 +1,7 @@
 ﻿using Break.Pool;
 using UniRx;
 using UnityEngine;
-
+using Zenject;
 
 public sealed class EnemySpawner : MonoBehaviour
 {
@@ -10,16 +10,18 @@ public sealed class EnemySpawner : MonoBehaviour
     [Space(20)]
     [SerializeField] private Transform[] spawnPoints;
 
+    [Inject] private EventHolder eventHolder;
+
     private int killed;
 
     private void Start()
     {
-        EventHolder.Instance.OnEnemyDie.Subscribe(_ =>
+        eventHolder.OnEnemyDie.Subscribe(_ =>
         {
             killed++;
 
             if (amount == killed)
-                EventHolder.Instance.OnEndGame.Invoke(true);
+                eventHolder.OnEndGame.Invoke(true);
         });
         Spawn();
     }

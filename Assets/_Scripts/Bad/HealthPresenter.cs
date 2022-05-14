@@ -2,24 +2,21 @@
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public sealed class HealthPresenter : MonoBehaviour
 {
     [SerializeField] private Image healthContent;
-    [SerializeField] private Damagable player;
+    
+    [Inject] private Damagable player;
 
     private void Start()
     {
-        player.ObserveEveryValueChanged(_ => _.CurrentHealth)
-            .Subscribe(_ =>
-            {
-                UpdateUI(player.CurrentHealth.InPercent(0, player.InitialHelth));
-            });
-    }
+        player.ObserveEveryValueChanged(health => player.CurrentHealth)
+            .TakeUntilDestroy(gameObject)
+            .Subscribe(health => 
+                healthContent.fillAmount = health.InPercent(0, player.InitialHelth));
 
-    private void UpdateUI(float percent)
-    {
-        healthContent.fillAmount = percent;
     }
 }
 

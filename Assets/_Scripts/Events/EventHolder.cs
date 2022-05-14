@@ -1,9 +1,6 @@
-﻿
+﻿using System;
 
-using System;
-using UnityEngine;
-
-public sealed class EventHolder : Singletone<EventHolder>, IDisposeHandler
+public sealed class EventHolder : IDisposable
 {
     private GlobalEvent onMenuOpenedEvent = new GlobalEvent();
     private GlobalEvent onMenuClosedEvent = new GlobalEvent();
@@ -20,19 +17,13 @@ public sealed class EventHolder : Singletone<EventHolder>, IDisposeHandler
     public GlobalEvent<int> OnEnemyDie => onEnemyDie;
 
 
-    public override void Dispose()
+    void IDisposable.Dispose()
     {
         onMenuOpenedEvent.Dispose();
         onMenuClosedEvent.Dispose();
         onEndGame.Dispose();
         onEnemyDie.Dispose();
         onLevelChanged.Dispose();
-        base.Dispose();
-    }
-
-    public void OnDispose()
-    {
-        Dispose();
     }
 }
 

@@ -1,16 +1,13 @@
 ﻿
+using Break.Pause;
 using System.Collections.Generic;
+using Zenject;
 
 public sealed class Disposer : MonoSingleton<Disposer>
 {
 
     private List<IDisposeHandler> handlers = new List<IDisposeHandler>();
 
-    private void Start()
-    {
-        Register(EventHolder.Instance);
-        Register(PauseController.Instance);
-    }
 
     public void Register(IDisposeHandler handler)
     {

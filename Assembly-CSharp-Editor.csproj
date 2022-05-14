@@ -1095,10 +1095,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{C87308A2-537D-5CF4-D57F-0B15DA7F7CBA}</Project>
-      <Name>Assembly-CSharp</Name>
-    </ProjectReference>
     <ProjectReference Include="UniTask.TextMeshPro.csproj">
       <Project>{64ADF35F-533D-981C-954C-FB50CE911460}</Project>
       <Name>UniTask.TextMeshPro</Name>

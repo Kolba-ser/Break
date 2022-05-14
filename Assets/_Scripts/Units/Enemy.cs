@@ -2,10 +2,13 @@
 using Break.Pool;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 public sealed class Enemy : Damagable, IPooledObject
 {
     [SerializeField] private int moneyReward;
+
+    [Inject] private EventHolder eventHolder;
 
     public void OnPullIn()
     {
@@ -19,7 +22,8 @@ public sealed class Enemy : Damagable, IPooledObject
 
     protected override void OnDeath()
     {
-        EventHolder.Instance.OnEnemyDie.Invoke(moneyReward);
+        eventHolder.OnEnemyDie.Invoke(moneyReward);
+        
         Observable.Timer(2f.InSec())
             .Subscribe(_ => PoolSystem.Instance.TryRemove<Enemy>(this));
         base.OnDeath();

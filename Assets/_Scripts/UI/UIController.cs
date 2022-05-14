@@ -1,14 +1,19 @@
 ﻿
+using Break.Pause;
 using System.Collections.Generic;
+using Zenject;
 
 public sealed class UIController : MonoSingleton<UIController>
 {
+    [Inject] private EventHolder eventHolder;
+    [Inject] private IPauseService pauseService;
+
     private List<UIMenu> menus = new List<UIMenu>();
 
     private void Awake()
     {
-        EventHolder.Instance.OnMenuOpenedEvent.Subscribe(() => PauseController.Instance.Pause());
-        EventHolder.Instance.OnMenuClosedEvent.Subscribe(() => PauseController.Instance.Unpause());
+        eventHolder.OnMenuOpenedEvent.Subscribe(() => pauseService.Pause());
+        eventHolder.OnMenuClosedEvent.Subscribe(() => pauseService.Unpause());
     }
 
     public void Register(UIMenu menu)

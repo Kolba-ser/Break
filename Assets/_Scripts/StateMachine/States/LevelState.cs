@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using Zenject;
 
 public sealed class LevelState : IState
 {
@@ -7,6 +8,8 @@ public sealed class LevelState : IState
     private LevelView menuView;
     private RestartView restartView;
     private IGameService gameService;
+
+    [Inject] private EventHolder eventHolder;
 
     public LevelState(IGameService gameService)
     {
@@ -27,7 +30,7 @@ public sealed class LevelState : IState
     {
         menuView.Play -= OnMainMenu;
         restartView.Restart -= OnRestart;
-        EventHolder.Instance.OnLevelChanged.Invoke();
+        eventHolder.OnLevelChanged.Invoke();
 
     }
 

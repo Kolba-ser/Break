@@ -4,6 +4,7 @@ using Break.Weapons;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public sealed class InventoryPresenter : UIMenu
 {
@@ -12,6 +13,8 @@ public sealed class InventoryPresenter : UIMenu
 
     [SerializeField] private Transform content;
     [SerializeField] private PlayerWeaponController weaponController;
+
+    [Inject] private EventHolder eventHolder;
 
     private List<InventorySlotPresenter> slots;
     private Canvas canvas;
@@ -33,10 +36,10 @@ public sealed class InventoryPresenter : UIMenu
             AddSlotPresenter();
         }
 
-        InputController.Instance.OnInventory(Show, Hide);
-        EventHolder.Instance.OnEndGame.Subscribe(_ =>
+        inputService.OnInventory(Show, Hide);
+        eventHolder.OnEndGame.Subscribe(_ =>
         {
-            InputController.Instance.OnInventory(Show, Hide, false);
+            inputService.OnInventory(Show, Hide, false);
         });
     }
 

@@ -1,10 +1,13 @@
 ﻿
 using UnityEngine;
 using UnityEngine.Assertions;
+using Zenject;
 
 public sealed class RestartState : IState
 {
     private IGameService gameService;
+
+    [Inject] private EventHolder eventHolder;
 
     public RestartState(IGameService gameService)
     {
@@ -13,7 +16,7 @@ public sealed class RestartState : IState
 
     public void OnEnter()
     {
-        EventHolder.Instance.OnLevelChanged.Invoke();
+        eventHolder.OnLevelChanged.Invoke();
         gameService.Fire(GameTrigger.Restart);
     }
 

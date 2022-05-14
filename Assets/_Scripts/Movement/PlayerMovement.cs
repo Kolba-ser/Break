@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Break.Pause;
 using UniRx;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Zenject;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,13 +19,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float distanceFromGround;
 
+    [Inject] private InputService inputService;
+    [Inject] private IPauseService pauseService;
+
     private Camera mainCamera;
     private Rigidbody rigidbody;
     private RaycastHit hit;
 
     private bool cooldownActive;
 
-    private bool isPaused => PauseController.Instance.IsPaused;
+    private bool isPaused => pauseService.IsPaused;
 
     private void Awake()
     {
@@ -36,8 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        InputController.Instance.OnJump(Jump);
-        InputController.Instance.OnDash(Dash);
+        inputService.OnJump(Jump);
+        inputService.OnDash(Dash);
     }
 
     private void Jump()
@@ -53,13 +55,13 @@ public class PlayerMovement : MonoBehaviour
         if (!isPaused && !cooldownActive)
         {
             cooldownActive = true;
-            if (InputController.Instance.MoveKeyboardInput.x != 0)
+            if (inputService.MoveKeyboardInput.x != 0)
             {
-                rigidbody.AddForce(transform.right * InputController.Instance.MoveKeyboardInput.x * dashForce, ForceMode.Impulse);
+                rigidbody.AddForce(transform.right * inputService.MoveKeyboardInput.x * dashForce, ForceMode.Impulse);
             }
-            if (InputController.Instance.MoveKeyboardInput.z != 0)
+            if (inputService.MoveKeyboardInput.z != 0)
             {
-                rigidbody.AddForce(transform.forward * InputController.Instance.MoveKeyboardInput.z * dashForce, ForceMode.Impulse);
+                rigidbody.AddForce(transform.forward * inputService.MoveKeyboardInput.z * dashForce, ForceMode.Impulse);
             }
 
             Observable.Timer(dashCooldown.InSec()).TakeUntilDisable(gameObject)
@@ -73,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         if (isPaused)
             return;
 
-        var ray = mainCamera.ScreenPointToRay(InputController.Instance.MousePosition);
+        var ray = mainCamera.ScreenPointToRay(inputService.MousePosition);
         var up = rigidbody.rotation * Vectors.Up;
 
         var rigidbodyPosition = rigidbody.position;
@@ -91,16 +93,16 @@ public class PlayerMovement : MonoBehaviour
             directionToTarget.y = normalDirection.y;
 
 
-            if(InputController.Instance.MoveKeyboardInput.x != 0)
+            if(inputService.MoveKeyboardInput.x != 0)
             {
                 rigidbody.MovePosition(rigidbody.position + transform.right
-                                    * InputController.Instance.MoveKeyboardInput.x
+                                    * inputService.MoveKeyboardInput.x
                                     * moveSpeed * Time.fixedDeltaTime);
             }
-            if (InputController.Instance.MoveKeyboardInput.z != 0)
+            if (inputService.MoveKeyboardInput.z != 0)
             {
                 rigidbody.MovePosition(rigidbody.position + transform.forward
-                                    * InputController.Instance.MoveKeyboardInput.z 
+                                    * inputService.MoveKeyboardInput.z 
                                     * moveSpeed * Time.fixedDeltaTime);
             }
 

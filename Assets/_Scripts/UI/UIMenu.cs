@@ -1,9 +1,13 @@
 ﻿using System;
 using UnityEngine;
-
+using Zenject;
 
 public abstract class UIMenu : MonoBehaviour
 {
+
+    [Inject] protected InputService inputService;
+    [Inject] private EventHolder eventHolder;
+
     protected virtual void Start()
     {
         UIController.Instance.Register(this);
@@ -13,12 +17,12 @@ public abstract class UIMenu : MonoBehaviour
 
     public virtual void Show()
     {
-        EventHolder.Instance.OnMenuOpenedEvent.Invoke();
+        eventHolder.OnMenuOpenedEvent.Invoke();
     }
 
     public virtual void Hide()
     {
-        EventHolder.Instance.OnMenuClosedEvent.Invoke();
+        eventHolder.OnMenuClosedEvent.Invoke();
     }
 }
 
