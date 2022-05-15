@@ -15,6 +15,7 @@ public sealed class InventoryPresenter : UIMenu
     [SerializeField] private PlayerWeaponController weaponController;
 
     [Inject] private EventHolder eventHolder;
+    [Inject] private PoolSystem poolSystem;
 
     private List<InventorySlotPresenter> slots;
     private Canvas canvas;
@@ -86,7 +87,7 @@ public sealed class InventoryPresenter : UIMenu
 
     private void AddSlotPresenter()
     {
-        if(PoolSystem.Instance.TryGet(out InventorySlotPresenter slot, false))
+        if(poolSystem.TryGet(out InventorySlotPresenter slot, false))
         {
             slots.Add(slot);
             slot.transform.SetParent(content);

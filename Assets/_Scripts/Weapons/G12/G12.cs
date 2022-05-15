@@ -1,8 +1,11 @@
-﻿using Break.Weapons;
+﻿using Break.Pool;
+using Break.Units;
+using Break.Weapons;
 using Cinemachine;
 using System;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 public sealed class G12 : Weapon
 {
@@ -11,8 +14,12 @@ public sealed class G12 : Weapon
     [SerializeField] private float fireRate;
     [SerializeField, Range(1, 4)] private int level = 1;
 
+    [Inject] private PoolSystem poolSystem;
+
     private IDisposable shooting;
     private CinemachineImpulseSource impulseSource;
+
+    private string impactVfx = "G12_Shoot_Vfx";
 
     protected override void Awake()
     {
@@ -34,8 +41,11 @@ public sealed class G12 : Weapon
 
                 if (Physics.Raycast(shotPoint.position, transform.forward, out RaycastHit hit, 100f))
                 {
-                    var fx = Instantiate(bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
-                    fx.Play();
+                    if(poolSystem.TryGet(out Vfx vfx, impactVfx))
+                    {
+                        vfx.transform.rotation = Quaternion.LookRotation(hit.normal);
+                        vfx.transform.position = hit.point;
+                    }
 
                     if (hit.collider.TryGetComponent(out Damagable damagable))
                     {

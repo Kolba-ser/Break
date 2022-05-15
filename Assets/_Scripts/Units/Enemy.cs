@@ -9,7 +9,7 @@ public sealed class Enemy : Damagable, IPooledObject
     [SerializeField] private int moneyReward;
 
     [Inject] private EventHolder eventHolder;
-
+    [Inject] private PoolSystem poolSystem;
     public void OnPullIn()
     {
         
@@ -25,7 +25,7 @@ public sealed class Enemy : Damagable, IPooledObject
         eventHolder.OnEnemyDie.Invoke(moneyReward);
         
         Observable.Timer(2f.InSec())
-            .Subscribe(_ => PoolSystem.Instance.TryRemove<Enemy>(this));
+            .Subscribe(_ => poolSystem.TryRemove<Enemy>(this));
         base.OnDeath();
     }
 }

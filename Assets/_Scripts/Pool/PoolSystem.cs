@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Break.Pool
 {
-    public sealed class PoolSystem : MonoSingleton<PoolSystem>
+    public sealed class PoolSystem : MonoBehaviour
     {
 
         [SerializeField] private List<Pool> pools;
@@ -35,11 +35,35 @@ namespace Break.Pool
 
             return false;
         }
+        public bool TryGet<T>(out T pooledObject, string name, bool activate = true)
+        {
+            pooledObject = default;
+
+            var targetPool = pools.Find(_ => _.Name == name);
+
+            if (targetPool != null)
+            {
+                pooledObject = targetPool.Get(activate).transform.GetComponent<T>();
+                return true;
+            }
+
+            return false;
+        }
 
         public bool TryRemove<T>(IPooledObject pooledObject)
         {
             var targetType = typeof(T);
             var targetPool = pools.Find(_ => _.Type == targetType);
+            if (targetPool != null && pooledObject != null)
+            {
+                return targetPool.TryRemove(pooledObject);
+            }
+
+            return false;
+        }
+        public bool TryRemove(IPooledObject pooledObject, string name)
+        {
+            var targetPool = pools.Find(_ => _.Name == name);
             if (targetPool != null && pooledObject != null)
             {
                 return targetPool.TryRemove(pooledObject);
@@ -57,6 +81,15 @@ namespace Break.Pool
             pool.Init(transform);
             pools.Add(pool);
         }
+        public void CreatePool(int quantity, string name, PoolFactory factory)
+        {
+            var pool = new Pool();
+            pool.factory = factory;
+            pool.Quantity = quantity;
+
+            pool.Init(transform, name);
+            pools.Add(pool);
+        }
         /// <summary>
         /// Удаляет пул и объекты по передоваемоему типу.
         /// Во избежание ошибок, перед тем как очистить пул, убедитесть что все объекты были возвращены !
@@ -65,6 +98,15 @@ namespace Break.Pool
         {
             var targetType = typeof(T);
             var targetPool = pools.Find(_ => _.Type == targetType);
+
+            if (targetPool != null)
+            {
+                targetPool.Clear();
+            }
+        }
+        public void ClearPool(string name)
+        {
+            var targetPool = pools.Find(_ => _.Name == name);
 
             if (targetPool != null)
             {
@@ -85,10 +127,23 @@ namespace Break.Pool
                 targetPool.ClearAsync();
             }
         }
+        public void ClearPoolAsync(string name)
+        {
+            var targetPool = pools.Find(_ => _.Name == name);
+
+            if (targetPool != null)
+            {
+                targetPool.ClearAsync();
+            }
+        }
 
         public bool CanGet<T>()
         {
             return pools.Find(_ => _.Type == typeof(T)).isAvaliable;
+        }
+        public bool CanGet(string name)
+        {
+            return pools.Find(_ => _.Name == name).isAvaliable;
         }
 
         [Serializable]
@@ -96,6 +151,7 @@ namespace Break.Pool
         {
             [Range(1, 150)]
             public int Quantity;
+            public string Name;
             public PoolFactory factory;
 
             public Type Type => factory.ProductType;
@@ -116,10 +172,19 @@ namespace Break.Pool
             public bool isNotUsed => numOfUnavaliables == 0;
             public bool isAvaliable => numOfAvaliables > 0;
 
-            public void Init(Transform parent)
+            public void Init(Transform parent, string name = "")
             {
                 if (isInitialized)
                     return;
+
+                if (Name.IsEmpty())
+                {
+                    if (!name.IsEmpty())
+                        Name = name;
+                    else
+                        Name = Type.ToString();
+                }
+
 
                 avaliables = new Queue<IPooledObject>(Quantity);
                 unavaliables = new List<IPooledObject>(Quantity);

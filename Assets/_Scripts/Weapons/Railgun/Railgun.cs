@@ -5,6 +5,7 @@ using UnityEngine;
 using Cinemachine;
 using System;
 using UniRx;
+using Zenject;
 
 [RequireComponent(typeof(CinemachineImpulseSource))]
 public sealed class Railgun : Weapon
@@ -12,6 +13,8 @@ public sealed class Railgun : Weapon
     [SerializeField] private float minForce;
     [SerializeField] private float maxForce;
     [SerializeField] private float accambulationRate;
+
+    [Inject] private PoolSystem poolSystem;
 
     private CinemachineImpulseSource impulseSource;
 
@@ -32,7 +35,7 @@ public sealed class Railgun : Weapon
     {
         base.StartShoot();
         currentLaunchForce = minForce;
-        if (PoolSystem.Instance.CanGet<Armature>())
+        if (poolSystem.CanGet<Armature>())
         {
             accambulating = Observable.EveryUpdate().TakeUntilDisable(gameObject)
                 .Subscribe(_ =>
@@ -46,7 +49,7 @@ public sealed class Railgun : Weapon
     {
         base.StopShoot();
         accambulating?.Dispose();
-        if (PoolSystem.Instance.TryGet(out Armature armature))
+        if (poolSystem.TryGet(out Armature armature))
         {
             armature.transform.position = shotPoint.position;
             armature.transform.rotation = shotPoint.rotation;

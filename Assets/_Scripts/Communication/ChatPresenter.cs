@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 public sealed class ChatPresenter : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public sealed class ChatPresenter : MonoBehaviour
     [Space(20)]
     [SerializeField] private ContentSide companionSide;
     [SerializeField] private ContentSide ourSide;
+
+    [Inject] private PoolSystem poolSystem;
 
     private Dialogue dialogue = new Dialogue();
     private Queue<Message> messages;
@@ -60,7 +63,7 @@ public sealed class ChatPresenter : MonoBehaviour
     {
         for (int i = 0; i < node.Answers.Length; i++)
         {
-            if (PoolSystem.Instance.TryGet(out AnswerButton answerButton))
+            if (poolSystem.TryGet(out AnswerButton answerButton))
             {
                 Answer answer = node.Answers[i];
 
@@ -75,7 +78,7 @@ public sealed class ChatPresenter : MonoBehaviour
         int iterations = answers.Count;
         for (int i = 0; i < iterations; i++)
         {
-            PoolSystem.Instance.TryRemove<AnswerButton>(answers.Dequeue());
+            poolSystem.TryRemove<AnswerButton>(answers.Dequeue());
         }
     }
 
@@ -93,7 +96,7 @@ public sealed class ChatPresenter : MonoBehaviour
 
     private void SendToChat(string text, ContentSide side, int spriteIndex, Action<Node> callback = null)
     {
-        if (PoolSystem.Instance.TryGet(out Message message))
+        if (poolSystem.TryGet(out Message message))
         {
             message.transform.SetParent(chatContent);
             message.SetParameters(side, text, dialogueImages.Get(spriteIndex));

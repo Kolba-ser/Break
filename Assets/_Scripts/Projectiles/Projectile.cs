@@ -2,7 +2,7 @@
 using System;
 using UniRx;
 using UnityEngine;
-
+using Zenject;
 
 public abstract class Projectile : MonoBehaviour, IPooledObject
 {
@@ -10,9 +10,11 @@ public abstract class Projectile : MonoBehaviour, IPooledObject
 
     protected float damage;
 
+    [Inject] private PoolSystem poolSystem;
+
     protected void ReturnToPool<T>(IPooledObject pooledObject, Action callback = null)
     {
-        if (PoolSystem.Instance.TryRemove<T>(pooledObject))
+        if (poolSystem.TryRemove<T>(pooledObject))
         {
             callback?.Invoke();
         }

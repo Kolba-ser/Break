@@ -2,20 +2,18 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{C87308A2-537D-5CF4-D57F-0B15DA7F7CBA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
@@ -71,12 +69,14 @@
     <Compile Include="Assets\Settings\Input\Input.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\EnemyFactory.cs" />
     <Compile Include="Assets\_Scripts\Triggers\DeathTrigger.cs" />
+    <Compile Include="Assets\_Scripts\Installers\WalletInstaller.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Railgun\Railgun.cs" />
     <Compile Include="Assets\_Scripts\Bad\HealthPresenter.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\Spider.cs" />
     <Compile Include="Assets\_Scripts\Communication\ChatPresenter.cs" />
     <Compile Include="Assets\_Scripts\UI\Inventory\Interfaces\IInventoryModel.cs" />
     <Compile Include="Assets\_Scripts\Bad\EnemySpawner.cs" />
+    <Compile Include="Assets\_Scripts\Installers\EventHolderInstaller.cs" />
     <Compile Include="Assets\_Scripts\Bad\Disposer.cs" />
     <Compile Include="Assets\_Scripts\Shared\Singletone.cs" />
     <Compile Include="Assets\_Scripts\Utility\XML\SerializerXML.cs" />
@@ -89,6 +89,7 @@
     <Compile Include="Assets\_Scripts\Weapons\G12\G12.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\PoolFactory.cs" />
     <Compile Include="Assets\_Scripts\AI\AIWeaponConroller.cs" />
+    <Compile Include="Assets\_Scripts\Pause\IPauseService.cs" />
     <Compile Include="Assets\_Scripts\Utility\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\_Scripts\Communication\Dialogue.cs" />
     <Compile Include="Assets\_Scripts\Triggers\WeaponPickupTrigger.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets\_Scripts\Pool\PoolSystem.cs" />
     <Compile Include="Assets\_Scripts\SO\Images\DialogueImages.cs" />
     <Compile Include="Assets\_Scripts\UI\StatesView\LevelView.cs" />
+    <Compile Include="Assets\_Scripts\Installers\InputServiceInstaller.cs" />
     <Compile Include="Assets\_Scripts\AI\Chaser.cs" />
     <Compile Include="Assets\_Scripts\Shared\MonoSingleton.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Harpoon\HarpoonSettings.cs" />
@@ -115,10 +117,13 @@
     <Compile Include="Assets\_Scripts\Services\Interface\IGameService.cs" />
     <Compile Include="Assets\_Scripts\Utility\XML\UnityXmlHelper.cs" />
     <Compile Include="Assets\_Scripts\SO\Factories\Pool\AnswerButtonFactory.cs" />
+    <Compile Include="Assets\_Scripts\Installers\DiContainerInstaller.cs" />
     <Compile Include="Assets\_Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\_Scripts\Communication\AnswerButton.cs" />
     <Compile Include="Assets\_Scripts\Communication\Message.cs" />
     <Compile Include="Assets\_Scripts\AI\AIDependet.cs" />
+    <Compile Include="Assets\_Scripts\Money\IMoneyHolder.cs" />
+    <Compile Include="Assets\_Scripts\Money\IWallet.cs" />
     <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeTransforms.cs" />
     <Compile Include="Assets\_Scripts\Triggers\AITrigger.cs" />
     <Compile Include="Assets\_Scripts\Control\PlayerWeaponController.cs" />
@@ -136,10 +141,12 @@
     <Compile Include="Assets\_Scripts\StateMachine\States\LoadMainMenuState.cs" />
     <Compile Include="Assets\_Scripts\UI\UIMenu.cs" />
     <Compile Include="Assets\_Scripts\Inventory\InventoryModel.cs" />
+    <Compile Include="Assets\_Scripts\UI\Money\MoneyPresenter.cs" />
     <Compile Include="Assets\_Scripts\Units\Player.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponSettings.cs" />
     <Compile Include="Assets\_Scripts\Shared\Vectors.cs" />
     <Compile Include="Assets\_Scripts\Money\Wallet.cs" />
+    <Compile Include="Assets\_Scripts\Shared\DiRef.cs" />
     <Compile Include="Assets\_Scripts\Units\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Armature.cs" />
     <Compile Include="Assets\_Scripts\UI\StatesView\MainMenuView.cs" />
@@ -155,8 +162,10 @@
     <Compile Include="Assets\_Scripts\Characteristics\Interfaces\ITargetable.cs" />
     <Compile Include="Assets\_Scripts\Input\InputService.cs" />
     <Compile Include="Assets\_Scripts\Shared\Layers.cs" />
+    <Compile Include="Assets\_Scripts\Installers\PlayerInstaller.cs" />
     <Compile Include="Assets\_Scripts\Procedural\Animation\SpiderMovement\LegTarget.cs" />
     <Compile Include="Assets\_Scripts\Inventory\IEquipable.cs" />
+    <Compile Include="Assets\_Scripts\Pause\PauseService.cs" />
     <Compile Include="Assets\_Scripts\Characteristics\Characteristic.cs" />
     <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\Core\FlagEnumAttribute.cs" />
     <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeHelper.cs" />
@@ -166,19 +175,11 @@
     <Compile Include="Assets\_Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Inventory\WeaponSlot.cs" />
-    <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
-    <Compile Include="Assets\_Scripts\Installers\InputServiceInstaller.cs" />
-    <Compile Include="Assets\_Scripts\Installers\EventHolderInstaller.cs" />
-    <Compile Include="Assets\_Scripts\Shared\DiRef.cs" />
-    <Compile Include="Assets\_Scripts\Installers\DiContainerInstaller.cs" />
-    <Compile Include="Assets\_Scripts\Pause\PauseService.cs" />
     <Compile Include="Assets\_Scripts\Installers\PauseServiceInstaller.cs" />
-    <Compile Include="Assets\_Scripts\Pause\IPauseService.cs" />
-    <Compile Include="Assets\_Scripts\Installers\WalletInstaller.cs" />
-    <Compile Include="Assets\_Scripts\Installers\PlayerInstaller.cs" />
-    <Compile Include="Assets\_Scripts\Money\IWallet.cs" />
-    <Compile Include="Assets\_Scripts\Money\IMoneyHolder.cs" />
-    <Compile Include="Assets\_Scripts\UI\Money\MoneyPresenter.cs" />
+    <Compile Include="Assets\_Scripts\Characteristics\Graspable.cs" />
+    <Compile Include="Assets\_Scripts\Installers\PoolInstaller.cs" />
+    <Compile Include="Assets\_Scripts\SO\Factories\Pool\VfxFactory.cs" />
+    <Compile Include="Assets\_Scripts\Units\Vfx.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -462,11 +463,20 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.14f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="Zenject-usage">
+      <HintPath>Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
+      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.4\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.4\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
+      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.4\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
@@ -480,20 +490,11 @@
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.6\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="clipper_library">
-      <HintPath>Library\PackageCache\com.unity.cinemachine@2.8.4\Runtime\ThirdParty\clipper_library.dll</HintPath>
-    </Reference>
-    <Reference Include="Zenject-usage">
-      <HintPath>Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
-      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
-      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
-    </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="clipper_library">
+      <HintPath>Library\PackageCache\com.unity.cinemachine@2.8.4\Runtime\ThirdParty\clipper_library.dll</HintPath>
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
       <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
@@ -998,9 +999,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Zenject-Editor.csproj">
+      <Project>{CC09F122-D033-8926-72D8-6249EC74B461}</Project>
+      <Name>Zenject-Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="UniTask.TextMeshPro.csproj">
       <Project>{64ADF35F-533D-981C-954C-FB50CE911460}</Project>
       <Name>UniTask.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
+      <Project>{15FDED6F-1F65-B243-43A0-FECB5E3B73E9}</Project>
+      <Name>Zenject-ReflectionBaking-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject.csproj">
+      <Project>{66164679-3675-603A-79BA-FB874875BA51}</Project>
+      <Name>Zenject</Name>
     </ProjectReference>
     <ProjectReference Include="UniTask.Addressables.csproj">
       <Project>{A1993031-1CBC-A86E-DE5E-DE560B2A494E}</Project>
@@ -1014,6 +1027,10 @@
       <Project>{419838AB-CB80-6BB0-3A81-963AA31A8ABB}</Project>
       <Name>UniTask.Linq</Name>
     </ProjectReference>
+    <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
+      <Project>{227F5C06-A181-4FFB-60D4-8FF9DE1CF427}</Project>
+      <Name>Zenject-PoolMonitor-Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="UniRx.csproj">
       <Project>{50E6450C-2EA7-21F5-AB5E-7D155E99C8D5}</Project>
       <Name>UniRx</Name>
@@ -1021,22 +1038,6 @@
     <ProjectReference Include="UniTask.csproj">
       <Project>{7503AD4C-4F22-0BC9-67DD-D55FFFE4B497}</Project>
       <Name>UniTask</Name>
-    </ProjectReference>
-    <ProjectReference Include="Zenject-Editor.csproj">
-      <Project>{CC09F122-D033-8926-72D8-6249EC74B461}</Project>
-      <Name>Zenject-Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
-      <Project>{227F5C06-A181-4FFB-60D4-8FF9DE1CF427}</Project>
-      <Name>Zenject-PoolMonitor-Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
-      <Project>{15FDED6F-1F65-B243-43A0-FECB5E3B73E9}</Project>
-      <Name>Zenject-ReflectionBaking-Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Zenject.csproj">
-      <Project>{66164679-3675-603A-79BA-FB874875BA51}</Project>
-      <Name>Zenject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

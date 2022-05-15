@@ -11,6 +11,7 @@ public sealed class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
 
     [Inject] private EventHolder eventHolder;
+    [Inject] private PoolSystem poolSystem;
 
     private int killed;
 
@@ -33,7 +34,7 @@ public sealed class EnemySpawner : MonoBehaviour
             .TakeWhile(_ => created < amount)
             .Subscribe(_ =>
             {
-                if(PoolSystem.Instance.TryGet(out Enemy enemy))
+                if(poolSystem.TryGet(out Enemy enemy))
                 {
                     enemy.transform.position = spawnPoints.GetRandom().position;
                     created++;

@@ -17,7 +17,7 @@ namespace Break.Factories
 
             if (verified || Verify(armature.transform))
             {
-                pooledObject = Instantiate(armature, parent);
+                pooledObject = DiRef.Container.InstantiatePrefab(armature, parent).GetComponent<IPooledObject>();
                 return true;
             }
 

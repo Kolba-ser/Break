@@ -35,7 +35,6 @@ namespace Break.Money
 
         public bool TryAdd(int amount)
         {
-            Debug.Log("Денюшки добавлены");
             if (currentAmount + amount > capacity)
                 return false;
 
